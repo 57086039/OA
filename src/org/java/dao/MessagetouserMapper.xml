@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.MessagetouserMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Messagetouser" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="MESSAGEID" property="messageid" jdbcType="DECIMAL" />
+    <result column="TOUSERID" property="touserid" jdbcType="VARCHAR" />
+    <result column="IFREAD" property="ifread" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, MESSAGEID, TOUSERID, IFREAD
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.MESSAGETOUSER
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.MESSAGETOUSER
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Messagetouser" >
+    insert into OA.MESSAGETOUSER (ID, MESSAGEID, TOUSERID, 
+      IFREAD)
+    values (#{id,jdbcType=DECIMAL}, #{messageid,jdbcType=DECIMAL}, #{touserid,jdbcType=VARCHAR}, 
+      #{ifread,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Messagetouser" >
+    insert into OA.MESSAGETOUSER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="messageid != null" >
+        MESSAGEID,
+      </if>
+      <if test="touserid != null" >
+        TOUSERID,
+      </if>
+      <if test="ifread != null" >
+        IFREAD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="messageid != null" >
+        #{messageid,jdbcType=DECIMAL},
+      </if>
+      <if test="touserid != null" >
+        #{touserid,jdbcType=VARCHAR},
+      </if>
+      <if test="ifread != null" >
+        #{ifread,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Messagetouser" >
+    update OA.MESSAGETOUSER
+    <set >
+      <if test="messageid != null" >
+        MESSAGEID = #{messageid,jdbcType=DECIMAL},
+      </if>
+      <if test="touserid != null" >
+        TOUSERID = #{touserid,jdbcType=VARCHAR},
+      </if>
+      <if test="ifread != null" >
+        IFREAD = #{ifread,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Messagetouser" >
+    update OA.MESSAGETOUSER
+    set MESSAGEID = #{messageid,jdbcType=DECIMAL},
+      TOUSERID = #{touserid,jdbcType=VARCHAR},
+      IFREAD = #{ifread,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

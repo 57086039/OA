@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.WorktimeMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Worktime" >
+    <id column="WORKTIMEID" property="worktimeid" jdbcType="DECIMAL" />
+    <result column="ONDUTYTIME" property="ondutytime" jdbcType="VARCHAR" />
+    <result column="OFFDUTYTIME" property="offdutytime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    WORKTIMEID, ONDUTYTIME, OFFDUTYTIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.WORKTIME
+    where WORKTIMEID = #{worktimeid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.WORKTIME
+    where WORKTIMEID = #{worktimeid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Worktime" >
+    insert into OA.WORKTIME (WORKTIMEID, ONDUTYTIME, OFFDUTYTIME
+      )
+    values (#{worktimeid,jdbcType=DECIMAL}, #{ondutytime,jdbcType=VARCHAR}, #{offdutytime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Worktime" >
+    insert into OA.WORKTIME
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="worktimeid != null" >
+        WORKTIMEID,
+      </if>
+      <if test="ondutytime != null" >
+        ONDUTYTIME,
+      </if>
+      <if test="offdutytime != null" >
+        OFFDUTYTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="worktimeid != null" >
+        #{worktimeid,jdbcType=DECIMAL},
+      </if>
+      <if test="ondutytime != null" >
+        #{ondutytime,jdbcType=VARCHAR},
+      </if>
+      <if test="offdutytime != null" >
+        #{offdutytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Worktime" >
+    update OA.WORKTIME
+    <set >
+      <if test="ondutytime != null" >
+        ONDUTYTIME = #{ondutytime,jdbcType=VARCHAR},
+      </if>
+      <if test="offdutytime != null" >
+        OFFDUTYTIME = #{offdutytime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where WORKTIMEID = #{worktimeid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Worktime" >
+    update OA.WORKTIME
+    set ONDUTYTIME = #{ondutytime,jdbcType=VARCHAR},
+      OFFDUTYTIME = #{offdutytime,jdbcType=VARCHAR}
+    where WORKTIMEID = #{worktimeid,jdbcType=DECIMAL}
+  </update>
+</mapper>

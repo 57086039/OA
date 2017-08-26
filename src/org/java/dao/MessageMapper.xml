@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.MessageMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Message" >
+    <id column="MESSAGEID" property="messageid" jdbcType="DECIMAL" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="DECIMAL" />
+    <result column="BEGINTIME" property="begintime" jdbcType="DATE" />
+    <result column="ENDTIME" property="endtime" jdbcType="DATE" />
+    <result column="FROMUSERID" property="fromuserid" jdbcType="VARCHAR" />
+    <result column="IFPUBLISH" property="ifpublish" jdbcType="DECIMAL" />
+    <result column="RECORDTIME" property="recordtime" jdbcType="DATE" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="org.java.entity.oa.Message" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="CLOB" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    MESSAGEID, TITLE, TYPE, BEGINTIME, ENDTIME, FROMUSERID, IFPUBLISH, RECORDTIME
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from OA.MESSAGE
+    where MESSAGEID = #{messageid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.MESSAGE
+    where MESSAGEID = #{messageid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Message" >
+    insert into OA.MESSAGE (MESSAGEID, TITLE, TYPE, 
+      BEGINTIME, ENDTIME, FROMUSERID, 
+      IFPUBLISH, RECORDTIME, CONTENT
+      )
+    values (#{messageid,jdbcType=DECIMAL}, #{title,jdbcType=VARCHAR}, #{type,jdbcType=DECIMAL}, 
+      #{begintime,jdbcType=DATE}, #{endtime,jdbcType=DATE}, #{fromuserid,jdbcType=VARCHAR}, 
+      #{ifpublish,jdbcType=DECIMAL}, #{recordtime,jdbcType=DATE}, #{content,jdbcType=CLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Message" >
+    insert into OA.MESSAGE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="messageid != null" >
+        MESSAGEID,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="begintime != null" >
+        BEGINTIME,
+      </if>
+      <if test="endtime != null" >
+        ENDTIME,
+      </if>
+      <if test="fromuserid != null" >
+        FROMUSERID,
+      </if>
+      <if test="ifpublish != null" >
+        IFPUBLISH,
+      </if>
+      <if test="recordtime != null" >
+        RECORDTIME,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="messageid != null" >
+        #{messageid,jdbcType=DECIMAL},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="begintime != null" >
+        #{begintime,jdbcType=DATE},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=DATE},
+      </if>
+      <if test="fromuserid != null" >
+        #{fromuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="ifpublish != null" >
+        #{ifpublish,jdbcType=DECIMAL},
+      </if>
+      <if test="recordtime != null" >
+        #{recordtime,jdbcType=DATE},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Message" >
+    update OA.MESSAGE
+    <set >
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="begintime != null" >
+        BEGINTIME = #{begintime,jdbcType=DATE},
+      </if>
+      <if test="endtime != null" >
+        ENDTIME = #{endtime,jdbcType=DATE},
+      </if>
+      <if test="fromuserid != null" >
+        FROMUSERID = #{fromuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="ifpublish != null" >
+        IFPUBLISH = #{ifpublish,jdbcType=DECIMAL},
+      </if>
+      <if test="recordtime != null" >
+        RECORDTIME = #{recordtime,jdbcType=DATE},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=CLOB},
+      </if>
+    </set>
+    where MESSAGEID = #{messageid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.java.entity.oa.Message" >
+    update OA.MESSAGE
+    set TITLE = #{title,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=DECIMAL},
+      BEGINTIME = #{begintime,jdbcType=DATE},
+      ENDTIME = #{endtime,jdbcType=DATE},
+      FROMUSERID = #{fromuserid,jdbcType=VARCHAR},
+      IFPUBLISH = #{ifpublish,jdbcType=DECIMAL},
+      RECORDTIME = #{recordtime,jdbcType=DATE},
+      CONTENT = #{content,jdbcType=CLOB}
+    where MESSAGEID = #{messageid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Message" >
+    update OA.MESSAGE
+    set TITLE = #{title,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=DECIMAL},
+      BEGINTIME = #{begintime,jdbcType=DATE},
+      ENDTIME = #{endtime,jdbcType=DATE},
+      FROMUSERID = #{fromuserid,jdbcType=VARCHAR},
+      IFPUBLISH = #{ifpublish,jdbcType=DECIMAL},
+      RECORDTIME = #{recordtime,jdbcType=DATE}
+    where MESSAGEID = #{messageid,jdbcType=DECIMAL}
+  </update>
+</mapper>

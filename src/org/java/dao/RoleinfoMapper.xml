@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.RoleinfoMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Roleinfo" >
+    <id column="ROLEID" property="roleid" jdbcType="DECIMAL" />
+    <result column="ROLENAME" property="rolename" jdbcType="VARCHAR" />
+    <result column="ROLEDESC" property="roledesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ROLEID, ROLENAME, ROLEDESC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.ROLEINFO
+    where ROLEID = #{roleid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.ROLEINFO
+    where ROLEID = #{roleid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Roleinfo" >
+    insert into OA.ROLEINFO (ROLEID, ROLENAME, ROLEDESC
+      )
+    values (#{roleid,jdbcType=DECIMAL}, #{rolename,jdbcType=VARCHAR}, #{roledesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Roleinfo" >
+    insert into OA.ROLEINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleid != null" >
+        ROLEID,
+      </if>
+      <if test="rolename != null" >
+        ROLENAME,
+      </if>
+      <if test="roledesc != null" >
+        ROLEDESC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleid != null" >
+        #{roleid,jdbcType=DECIMAL},
+      </if>
+      <if test="rolename != null" >
+        #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="roledesc != null" >
+        #{roledesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Roleinfo" >
+    update OA.ROLEINFO
+    <set >
+      <if test="rolename != null" >
+        ROLENAME = #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="roledesc != null" >
+        ROLEDESC = #{roledesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ROLEID = #{roleid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Roleinfo" >
+    update OA.ROLEINFO
+    set ROLENAME = #{rolename,jdbcType=VARCHAR},
+      ROLEDESC = #{roledesc,jdbcType=VARCHAR}
+    where ROLEID = #{roleid,jdbcType=DECIMAL}
+  </update>
+</mapper>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.MynoteMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Mynote" >
+    <id column="NOTEID" property="noteid" jdbcType="DECIMAL" />
+    <result column="NOTETITLE" property="notetitle" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="createtime" jdbcType="DATE" />
+    <result column="CREATEUSER" property="createuser" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="org.java.entity.oa.Mynote" extends="BaseResultMap" >
+    <result column="NOTECONTENT" property="notecontent" jdbcType="CLOB" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    NOTEID, NOTETITLE, CREATETIME, CREATEUSER
+  </sql>
+  <sql id="Blob_Column_List" >
+    NOTECONTENT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from OA.MYNOTE
+    where NOTEID = #{noteid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.MYNOTE
+    where NOTEID = #{noteid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Mynote" >
+    insert into OA.MYNOTE (NOTEID, NOTETITLE, CREATETIME, 
+      CREATEUSER, NOTECONTENT)
+    values (#{noteid,jdbcType=DECIMAL}, #{notetitle,jdbcType=VARCHAR}, #{createtime,jdbcType=DATE}, 
+      #{createuser,jdbcType=VARCHAR}, #{notecontent,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Mynote" >
+    insert into OA.MYNOTE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="noteid != null" >
+        NOTEID,
+      </if>
+      <if test="notetitle != null" >
+        NOTETITLE,
+      </if>
+      <if test="createtime != null" >
+        CREATETIME,
+      </if>
+      <if test="createuser != null" >
+        CREATEUSER,
+      </if>
+      <if test="notecontent != null" >
+        NOTECONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="noteid != null" >
+        #{noteid,jdbcType=DECIMAL},
+      </if>
+      <if test="notetitle != null" >
+        #{notetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=DATE},
+      </if>
+      <if test="createuser != null" >
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="notecontent != null" >
+        #{notecontent,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Mynote" >
+    update OA.MYNOTE
+    <set >
+      <if test="notetitle != null" >
+        NOTETITLE = #{notetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CREATETIME = #{createtime,jdbcType=DATE},
+      </if>
+      <if test="createuser != null" >
+        CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="notecontent != null" >
+        NOTECONTENT = #{notecontent,jdbcType=CLOB},
+      </if>
+    </set>
+    where NOTEID = #{noteid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.java.entity.oa.Mynote" >
+    update OA.MYNOTE
+    set NOTETITLE = #{notetitle,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=DATE},
+      CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      NOTECONTENT = #{notecontent,jdbcType=CLOB}
+    where NOTEID = #{noteid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Mynote" >
+    update OA.MYNOTE
+    set NOTETITLE = #{notetitle,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=DATE},
+      CREATEUSER = #{createuser,jdbcType=VARCHAR}
+    where NOTEID = #{noteid,jdbcType=DECIMAL}
+  </update>
+</mapper>

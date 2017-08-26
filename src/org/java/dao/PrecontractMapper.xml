@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.PrecontractMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Precontract" >
+    <id column="PRECONTRACTID" property="precontractid" jdbcType="DECIMAL" />
+    <result column="SCHEDULEID" property="scheduleid" jdbcType="DECIMAL" />
+    <result column="USERID" property="userid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PRECONTRACTID, SCHEDULEID, USERID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.PRECONTRACT
+    where PRECONTRACTID = #{precontractid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.PRECONTRACT
+    where PRECONTRACTID = #{precontractid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Precontract" >
+    insert into OA.PRECONTRACT (PRECONTRACTID, SCHEDULEID, USERID
+      )
+    values (#{precontractid,jdbcType=DECIMAL}, #{scheduleid,jdbcType=DECIMAL}, #{userid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Precontract" >
+    insert into OA.PRECONTRACT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="precontractid != null" >
+        PRECONTRACTID,
+      </if>
+      <if test="scheduleid != null" >
+        SCHEDULEID,
+      </if>
+      <if test="userid != null" >
+        USERID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="precontractid != null" >
+        #{precontractid,jdbcType=DECIMAL},
+      </if>
+      <if test="scheduleid != null" >
+        #{scheduleid,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Precontract" >
+    update OA.PRECONTRACT
+    <set >
+      <if test="scheduleid != null" >
+        SCHEDULEID = #{scheduleid,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null" >
+        USERID = #{userid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PRECONTRACTID = #{precontractid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Precontract" >
+    update OA.PRECONTRACT
+    set SCHEDULEID = #{scheduleid,jdbcType=DECIMAL},
+      USERID = #{userid,jdbcType=VARCHAR}
+    where PRECONTRACTID = #{precontractid,jdbcType=DECIMAL}
+  </update>
+</mapper>

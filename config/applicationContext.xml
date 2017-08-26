@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	
+
+	<!-- 配置视图映射器 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	
+	<!-- 引入属性文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+
+	<!-- 配置数据源 -->
+	<!-- bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${driver}"/>
+		
+		<property name="url" value="${url}"/>
+		
+		<property name="username" value="${user}"/>
+		
+		<property name="password" value="${pwd}"/>
+	</bean> -->
+	
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${driver}" />
+		<property name="jdbcUrl" value="${url}" />
+		<property name="user" value="${user}" />
+		<property name="password" value="${pwd}" />
+		<!-- 有了以上代码，就已经可以连接数据库，连接池配置都采用默认配置 -->
+		<property name="minPoolSize" value="10"/><!-- 最小连接数 -->
+		<property name="initialPoolSize" value="15"/><!--初始化的时候，有10个连接 -->
+		<property name="maxPoolSize" value="30"/><!-- 最大连接数 -->
+		<property name="maxIdleTime" value="60"/><!-- 闲置的最大时间秒， -->
+		<property name="acquireIncrement" value="2"/><!-- 如果连接池的连接数小于最小值的时候，一次性创建几个连接 -->
+		<property name="maxStatements" value="20"/><!-- 最多允许多少语句同时运行 -->
+	</bean>
+	
+	
+	<!-- 配置sqlsessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+	</bean>
+	
+	<!-- 启用注解 -->
+	<context:component-scan base-package="org.java" />
+	
+	<!-- 扫描Mapper -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="org.java.dao"/>
+	</bean>
+	
+	
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+	<!-- 启用注解事务 -->
+	<tx:annotation-driven/>
+	
+	
+
+</beans>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.ReadcommonmessageMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Readcommonmessage" >
+    <id column="READID" property="readid" jdbcType="DECIMAL" />
+    <result column="MESSAGEID" property="messageid" jdbcType="DECIMAL" />
+    <result column="USERID" property="userid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    READID, MESSAGEID, USERID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.READCOMMONMESSAGE
+    where READID = #{readid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.READCOMMONMESSAGE
+    where READID = #{readid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Readcommonmessage" >
+    insert into OA.READCOMMONMESSAGE (READID, MESSAGEID, USERID
+      )
+    values (#{readid,jdbcType=DECIMAL}, #{messageid,jdbcType=DECIMAL}, #{userid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Readcommonmessage" >
+    insert into OA.READCOMMONMESSAGE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="readid != null" >
+        READID,
+      </if>
+      <if test="messageid != null" >
+        MESSAGEID,
+      </if>
+      <if test="userid != null" >
+        USERID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="readid != null" >
+        #{readid,jdbcType=DECIMAL},
+      </if>
+      <if test="messageid != null" >
+        #{messageid,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Readcommonmessage" >
+    update OA.READCOMMONMESSAGE
+    <set >
+      <if test="messageid != null" >
+        MESSAGEID = #{messageid,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null" >
+        USERID = #{userid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where READID = #{readid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Readcommonmessage" >
+    update OA.READCOMMONMESSAGE
+    set MESSAGEID = #{messageid,jdbcType=DECIMAL},
+      USERID = #{userid,jdbcType=VARCHAR}
+    where READID = #{readid,jdbcType=DECIMAL}
+  </update>
+</mapper>

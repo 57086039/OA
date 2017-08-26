@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.AccessoryfileMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Accessoryfile" >
+    <id column="ACCESSORYID" property="accessoryid" jdbcType="DECIMAL" />
+    <result column="FILEID" property="fileid" jdbcType="DECIMAL" />
+    <result column="ACCESSORYNAME" property="accessoryname" jdbcType="VARCHAR" />
+    <result column="ACCESSORYSIZE" property="accessorysize" jdbcType="DECIMAL" />
+    <result column="ACCESSORYTYPE" property="accessorytype" jdbcType="DECIMAL" />
+    <result column="CREATEDATE" property="createdate" jdbcType="DATE" />
+    <result column="ACCESSORYPATH" property="accessorypath" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ACCESSORYID, FILEID, ACCESSORYNAME, ACCESSORYSIZE, ACCESSORYTYPE, CREATEDATE, ACCESSORYPATH
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.ACCESSORYFILE
+    where ACCESSORYID = #{accessoryid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.ACCESSORYFILE
+    where ACCESSORYID = #{accessoryid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Accessoryfile" >
+    insert into OA.ACCESSORYFILE (ACCESSORYID, FILEID, ACCESSORYNAME, 
+      ACCESSORYSIZE, ACCESSORYTYPE, CREATEDATE, 
+      ACCESSORYPATH)
+    values (#{accessoryid,jdbcType=DECIMAL}, #{fileid,jdbcType=DECIMAL}, #{accessoryname,jdbcType=VARCHAR}, 
+      #{accessorysize,jdbcType=DECIMAL}, #{accessorytype,jdbcType=DECIMAL}, #{createdate,jdbcType=DATE}, 
+      #{accessorypath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Accessoryfile" >
+    insert into OA.ACCESSORYFILE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accessoryid != null" >
+        ACCESSORYID,
+      </if>
+      <if test="fileid != null" >
+        FILEID,
+      </if>
+      <if test="accessoryname != null" >
+        ACCESSORYNAME,
+      </if>
+      <if test="accessorysize != null" >
+        ACCESSORYSIZE,
+      </if>
+      <if test="accessorytype != null" >
+        ACCESSORYTYPE,
+      </if>
+      <if test="createdate != null" >
+        CREATEDATE,
+      </if>
+      <if test="accessorypath != null" >
+        ACCESSORYPATH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accessoryid != null" >
+        #{accessoryid,jdbcType=DECIMAL},
+      </if>
+      <if test="fileid != null" >
+        #{fileid,jdbcType=DECIMAL},
+      </if>
+      <if test="accessoryname != null" >
+        #{accessoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="accessorysize != null" >
+        #{accessorysize,jdbcType=DECIMAL},
+      </if>
+      <if test="accessorytype != null" >
+        #{accessorytype,jdbcType=DECIMAL},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=DATE},
+      </if>
+      <if test="accessorypath != null" >
+        #{accessorypath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Accessoryfile" >
+    update OA.ACCESSORYFILE
+    <set >
+      <if test="fileid != null" >
+        FILEID = #{fileid,jdbcType=DECIMAL},
+      </if>
+      <if test="accessoryname != null" >
+        ACCESSORYNAME = #{accessoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="accessorysize != null" >
+        ACCESSORYSIZE = #{accessorysize,jdbcType=DECIMAL},
+      </if>
+      <if test="accessorytype != null" >
+        ACCESSORYTYPE = #{accessorytype,jdbcType=DECIMAL},
+      </if>
+      <if test="createdate != null" >
+        CREATEDATE = #{createdate,jdbcType=DATE},
+      </if>
+      <if test="accessorypath != null" >
+        ACCESSORYPATH = #{accessorypath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ACCESSORYID = #{accessoryid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Accessoryfile" >
+    update OA.ACCESSORYFILE
+    set FILEID = #{fileid,jdbcType=DECIMAL},
+      ACCESSORYNAME = #{accessoryname,jdbcType=VARCHAR},
+      ACCESSORYSIZE = #{accessorysize,jdbcType=DECIMAL},
+      ACCESSORYTYPE = #{accessorytype,jdbcType=DECIMAL},
+      CREATEDATE = #{createdate,jdbcType=DATE},
+      ACCESSORYPATH = #{accessorypath,jdbcType=VARCHAR}
+    where ACCESSORYID = #{accessoryid,jdbcType=DECIMAL}
+  </update>
+</mapper>

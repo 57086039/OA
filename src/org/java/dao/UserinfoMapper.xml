@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.UserinfoMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Userinfo" >
+    <id column="USERID" property="userid" jdbcType="VARCHAR" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="DEPARTID" property="departid" jdbcType="DECIMAL" />
+    <result column="GENDER" property="gender" jdbcType="DECIMAL" />
+    <result column="ROLEID" property="roleid" jdbcType="DECIMAL" />
+    <result column="USERSTATEID" property="userstateid" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USERID, USERNAME, PASSWORD, DEPARTID, GENDER, ROLEID, USERSTATEID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.USERINFO
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from OA.USERINFO
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Userinfo" >
+    insert into OA.USERINFO (USERID, USERNAME, PASSWORD, 
+      DEPARTID, GENDER, ROLEID, 
+      USERSTATEID)
+    values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{departid,jdbcType=DECIMAL}, #{gender,jdbcType=DECIMAL}, #{roleid,jdbcType=DECIMAL}, 
+      #{userstateid,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Userinfo" >
+    insert into OA.USERINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        USERID,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="departid != null" >
+        DEPARTID,
+      </if>
+      <if test="gender != null" >
+        GENDER,
+      </if>
+      <if test="roleid != null" >
+        ROLEID,
+      </if>
+      <if test="userstateid != null" >
+        USERSTATEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="departid != null" >
+        #{departid,jdbcType=DECIMAL},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=DECIMAL},
+      </if>
+      <if test="roleid != null" >
+        #{roleid,jdbcType=DECIMAL},
+      </if>
+      <if test="userstateid != null" >
+        #{userstateid,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Userinfo" >
+    update OA.USERINFO
+    <set >
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="departid != null" >
+        DEPARTID = #{departid,jdbcType=DECIMAL},
+      </if>
+      <if test="gender != null" >
+        GENDER = #{gender,jdbcType=DECIMAL},
+      </if>
+      <if test="roleid != null" >
+        ROLEID = #{roleid,jdbcType=DECIMAL},
+      </if>
+      <if test="userstateid != null" >
+        USERSTATEID = #{userstateid,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Userinfo" >
+    update OA.USERINFO
+    set USERNAME = #{username,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      DEPARTID = #{departid,jdbcType=DECIMAL},
+      GENDER = #{gender,jdbcType=DECIMAL},
+      ROLEID = #{roleid,jdbcType=DECIMAL},
+      USERSTATEID = #{userstateid,jdbcType=DECIMAL}
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </update>
+  <select id="findByUname" parameterType="org.java.entity.oa.Userinfo" resultType="java.util.Map">
+
+  	select u.userid,u.username,u.password,u.departid,u.gender,u.roleid,u.userstateid,s.userstatetype,r.rolename,r.roledesc 
+
+	from userinfo u,UserState s,RoleInfo r where u.roleid=r.roleid and u.userstateid=s.userstateid and u.username=#{username} and u.password=#{password} 
+
+  </select>
+</mapper>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.UserstateMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Userstate" >
+    <id column="USERSTATEID" property="userstateid" jdbcType="DECIMAL" />
+    <result column="USERSTATETYPE" property="userstatetype" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USERSTATEID, USERSTATETYPE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.USERSTATE
+    where USERSTATEID = #{userstateid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.USERSTATE
+    where USERSTATEID = #{userstateid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Userstate" >
+    insert into OA.USERSTATE (USERSTATEID, USERSTATETYPE)
+    values (#{userstateid,jdbcType=DECIMAL}, #{userstatetype,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Userstate" >
+    insert into OA.USERSTATE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userstateid != null" >
+        USERSTATEID,
+      </if>
+      <if test="userstatetype != null" >
+        USERSTATETYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userstateid != null" >
+        #{userstateid,jdbcType=DECIMAL},
+      </if>
+      <if test="userstatetype != null" >
+        #{userstatetype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Userstate" >
+    update OA.USERSTATE
+    <set >
+      <if test="userstatetype != null" >
+        USERSTATETYPE = #{userstatetype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USERSTATEID = #{userstateid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Userstate" >
+    update OA.USERSTATE
+    set USERSTATETYPE = #{userstatetype,jdbcType=VARCHAR}
+    where USERSTATEID = #{userstateid,jdbcType=DECIMAL}
+  </update>
+</mapper>

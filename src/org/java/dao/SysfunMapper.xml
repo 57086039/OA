@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.SysfunMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Sysfun" >
+    <id column="NODEID" property="nodeid" jdbcType="DECIMAL" />
+    <result column="DISPLAYNAME" property="displayname" jdbcType="VARCHAR" />
+    <result column="NODEURL" property="nodeurl" jdbcType="VARCHAR" />
+    <result column="DISPLAYORDER" property="displayorder" jdbcType="DECIMAL" />
+    <result column="PARENTNODEID" property="parentnodeid" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    NODEID, DISPLAYNAME, NODEURL, DISPLAYORDER, PARENTNODEID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.SYSFUN
+    where NODEID = #{nodeid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.SYSFUN
+    where NODEID = #{nodeid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Sysfun" >
+    insert into OA.SYSFUN (NODEID, DISPLAYNAME, NODEURL, 
+      DISPLAYORDER, PARENTNODEID)
+    values (#{nodeid,jdbcType=DECIMAL}, #{displayname,jdbcType=VARCHAR}, #{nodeurl,jdbcType=VARCHAR}, 
+      #{displayorder,jdbcType=DECIMAL}, #{parentnodeid,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Sysfun" >
+    insert into OA.SYSFUN
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nodeid != null" >
+        NODEID,
+      </if>
+      <if test="displayname != null" >
+        DISPLAYNAME,
+      </if>
+      <if test="nodeurl != null" >
+        NODEURL,
+      </if>
+      <if test="displayorder != null" >
+        DISPLAYORDER,
+      </if>
+      <if test="parentnodeid != null" >
+        PARENTNODEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nodeid != null" >
+        #{nodeid,jdbcType=DECIMAL},
+      </if>
+      <if test="displayname != null" >
+        #{displayname,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeurl != null" >
+        #{nodeurl,jdbcType=VARCHAR},
+      </if>
+      <if test="displayorder != null" >
+        #{displayorder,jdbcType=DECIMAL},
+      </if>
+      <if test="parentnodeid != null" >
+        #{parentnodeid,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Sysfun" >
+    update OA.SYSFUN
+    <set >
+      <if test="displayname != null" >
+        DISPLAYNAME = #{displayname,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeurl != null" >
+        NODEURL = #{nodeurl,jdbcType=VARCHAR},
+      </if>
+      <if test="displayorder != null" >
+        DISPLAYORDER = #{displayorder,jdbcType=DECIMAL},
+      </if>
+      <if test="parentnodeid != null" >
+        PARENTNODEID = #{parentnodeid,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where NODEID = #{nodeid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Sysfun" >
+    update OA.SYSFUN
+    set DISPLAYNAME = #{displayname,jdbcType=VARCHAR},
+      NODEURL = #{nodeurl,jdbcType=VARCHAR},
+      DISPLAYORDER = #{displayorder,jdbcType=DECIMAL},
+      PARENTNODEID = #{parentnodeid,jdbcType=DECIMAL}
+    where NODEID = #{nodeid,jdbcType=DECIMAL}
+  </update>
+</mapper>

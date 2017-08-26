@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.FileinfoMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Fileinfo" >
+    <id column="FILEID" property="fileid" jdbcType="DECIMAL" />
+    <result column="FILENAME" property="filename" jdbcType="VARCHAR" />
+    <result column="FILETYPEID" property="filetypeid" jdbcType="DECIMAL" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="FILEOWNER" property="fileowner" jdbcType="VARCHAR" />
+    <result column="CREATEDATE" property="createdate" jdbcType="DATE" />
+    <result column="PARENTID" property="parentid" jdbcType="DECIMAL" />
+    <result column="FILEPATH" property="filepath" jdbcType="VARCHAR" />
+    <result column="IFDELETE" property="ifdelete" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    FILEID, FILENAME, FILETYPEID, REMARK, FILEOWNER, CREATEDATE, PARENTID, FILEPATH, 
+    IFDELETE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.FILEINFO
+    where FILEID = #{fileid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.FILEINFO
+    where FILEID = #{fileid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Fileinfo" >
+    insert into OA.FILEINFO (FILEID, FILENAME, FILETYPEID, 
+      REMARK, FILEOWNER, CREATEDATE, 
+      PARENTID, FILEPATH, IFDELETE
+      )
+    values (#{fileid,jdbcType=DECIMAL}, #{filename,jdbcType=VARCHAR}, #{filetypeid,jdbcType=DECIMAL}, 
+      #{remark,jdbcType=VARCHAR}, #{fileowner,jdbcType=VARCHAR}, #{createdate,jdbcType=DATE}, 
+      #{parentid,jdbcType=DECIMAL}, #{filepath,jdbcType=VARCHAR}, #{ifdelete,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Fileinfo" >
+    insert into OA.FILEINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fileid != null" >
+        FILEID,
+      </if>
+      <if test="filename != null" >
+        FILENAME,
+      </if>
+      <if test="filetypeid != null" >
+        FILETYPEID,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="fileowner != null" >
+        FILEOWNER,
+      </if>
+      <if test="createdate != null" >
+        CREATEDATE,
+      </if>
+      <if test="parentid != null" >
+        PARENTID,
+      </if>
+      <if test="filepath != null" >
+        FILEPATH,
+      </if>
+      <if test="ifdelete != null" >
+        IFDELETE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fileid != null" >
+        #{fileid,jdbcType=DECIMAL},
+      </if>
+      <if test="filename != null" >
+        #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="filetypeid != null" >
+        #{filetypeid,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="fileowner != null" >
+        #{fileowner,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=DATE},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=DECIMAL},
+      </if>
+      <if test="filepath != null" >
+        #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="ifdelete != null" >
+        #{ifdelete,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Fileinfo" >
+    update OA.FILEINFO
+    <set >
+      <if test="filename != null" >
+        FILENAME = #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="filetypeid != null" >
+        FILETYPEID = #{filetypeid,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="fileowner != null" >
+        FILEOWNER = #{fileowner,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        CREATEDATE = #{createdate,jdbcType=DATE},
+      </if>
+      <if test="parentid != null" >
+        PARENTID = #{parentid,jdbcType=DECIMAL},
+      </if>
+      <if test="filepath != null" >
+        FILEPATH = #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="ifdelete != null" >
+        IFDELETE = #{ifdelete,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where FILEID = #{fileid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Fileinfo" >
+    update OA.FILEINFO
+    set FILENAME = #{filename,jdbcType=VARCHAR},
+      FILETYPEID = #{filetypeid,jdbcType=DECIMAL},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      FILEOWNER = #{fileowner,jdbcType=VARCHAR},
+      CREATEDATE = #{createdate,jdbcType=DATE},
+      PARENTID = #{parentid,jdbcType=DECIMAL},
+      FILEPATH = #{filepath,jdbcType=VARCHAR},
+      IFDELETE = #{ifdelete,jdbcType=DECIMAL}
+    where FILEID = #{fileid,jdbcType=DECIMAL}
+  </update>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.MessagetypeMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Messagetype" >
+    <id column="MESSAGETYPEID" property="messagetypeid" jdbcType="DECIMAL" />
+    <result column="MESSAGETYPENAME" property="messagetypename" jdbcType="VARCHAR" />
+    <result column="MESSAGEDESC" property="messagedesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    MESSAGETYPEID, MESSAGETYPENAME, MESSAGEDESC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.MESSAGETYPE
+    where MESSAGETYPEID = #{messagetypeid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.MESSAGETYPE
+    where MESSAGETYPEID = #{messagetypeid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Messagetype" >
+    insert into OA.MESSAGETYPE (MESSAGETYPEID, MESSAGETYPENAME, MESSAGEDESC
+      )
+    values (#{messagetypeid,jdbcType=DECIMAL}, #{messagetypename,jdbcType=VARCHAR}, #{messagedesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Messagetype" >
+    insert into OA.MESSAGETYPE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="messagetypeid != null" >
+        MESSAGETYPEID,
+      </if>
+      <if test="messagetypename != null" >
+        MESSAGETYPENAME,
+      </if>
+      <if test="messagedesc != null" >
+        MESSAGEDESC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="messagetypeid != null" >
+        #{messagetypeid,jdbcType=DECIMAL},
+      </if>
+      <if test="messagetypename != null" >
+        #{messagetypename,jdbcType=VARCHAR},
+      </if>
+      <if test="messagedesc != null" >
+        #{messagedesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Messagetype" >
+    update OA.MESSAGETYPE
+    <set >
+      <if test="messagetypename != null" >
+        MESSAGETYPENAME = #{messagetypename,jdbcType=VARCHAR},
+      </if>
+      <if test="messagedesc != null" >
+        MESSAGEDESC = #{messagedesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where MESSAGETYPEID = #{messagetypeid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Messagetype" >
+    update OA.MESSAGETYPE
+    set MESSAGETYPENAME = #{messagetypename,jdbcType=VARCHAR},
+      MESSAGEDESC = #{messagedesc,jdbcType=VARCHAR}
+    where MESSAGETYPEID = #{messagetypeid,jdbcType=DECIMAL}
+  </update>
+</mapper>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.MeetinginfoMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Meetinginfo" >
+    <id column="MEETINGID" property="meetingid" jdbcType="DECIMAL" />
+    <result column="MEETINGNAME" property="meetingname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    MEETINGID, MEETINGNAME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.MEETINGINFO
+    where MEETINGID = #{meetingid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.MEETINGINFO
+    where MEETINGID = #{meetingid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Meetinginfo" >
+    insert into OA.MEETINGINFO (MEETINGID, MEETINGNAME)
+    values (#{meetingid,jdbcType=DECIMAL}, #{meetingname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Meetinginfo" >
+    insert into OA.MEETINGINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="meetingid != null" >
+        MEETINGID,
+      </if>
+      <if test="meetingname != null" >
+        MEETINGNAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="meetingid != null" >
+        #{meetingid,jdbcType=DECIMAL},
+      </if>
+      <if test="meetingname != null" >
+        #{meetingname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Meetinginfo" >
+    update OA.MEETINGINFO
+    <set >
+      <if test="meetingname != null" >
+        MEETINGNAME = #{meetingname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where MEETINGID = #{meetingid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Meetinginfo" >
+    update OA.MEETINGINFO
+    set MEETINGNAME = #{meetingname,jdbcType=VARCHAR}
+    where MEETINGID = #{meetingid,jdbcType=DECIMAL}
+  </update>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.RolerightMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Roleright" >
+    <id column="ROLERIGHTID" property="rolerightid" jdbcType="DECIMAL" />
+    <result column="ROLEID" property="roleid" jdbcType="DECIMAL" />
+    <result column="NODEID" property="nodeid" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ROLERIGHTID, ROLEID, NODEID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.ROLERIGHT
+    where ROLERIGHTID = #{rolerightid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.ROLERIGHT
+    where ROLERIGHTID = #{rolerightid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Roleright" >
+    insert into OA.ROLERIGHT (ROLERIGHTID, ROLEID, NODEID
+      )
+    values (#{rolerightid,jdbcType=DECIMAL}, #{roleid,jdbcType=DECIMAL}, #{nodeid,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Roleright" >
+    insert into OA.ROLERIGHT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rolerightid != null" >
+        ROLERIGHTID,
+      </if>
+      <if test="roleid != null" >
+        ROLEID,
+      </if>
+      <if test="nodeid != null" >
+        NODEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rolerightid != null" >
+        #{rolerightid,jdbcType=DECIMAL},
+      </if>
+      <if test="roleid != null" >
+        #{roleid,jdbcType=DECIMAL},
+      </if>
+      <if test="nodeid != null" >
+        #{nodeid,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Roleright" >
+    update OA.ROLERIGHT
+    <set >
+      <if test="roleid != null" >
+        ROLEID = #{roleid,jdbcType=DECIMAL},
+      </if>
+      <if test="nodeid != null" >
+        NODEID = #{nodeid,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ROLERIGHTID = #{rolerightid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Roleright" >
+    update OA.ROLERIGHT
+    set ROLEID = #{roleid,jdbcType=DECIMAL},
+      NODEID = #{nodeid,jdbcType=DECIMAL}
+    where ROLERIGHTID = #{rolerightid,jdbcType=DECIMAL}
+  </update>
+</mapper>

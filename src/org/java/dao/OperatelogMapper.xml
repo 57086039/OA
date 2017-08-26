@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.OperatelogMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Operatelog" >
+    <id column="OPERATEID" property="operateid" jdbcType="DECIMAL" />
+    <result column="USERID" property="userid" jdbcType="VARCHAR" />
+    <result column="OPERATENAME" property="operatename" jdbcType="VARCHAR" />
+    <result column="OBJECTID" property="objectid" jdbcType="VARCHAR" />
+    <result column="OPERATEDESC" property="operatedesc" jdbcType="VARCHAR" />
+    <result column="OPERATETIME" property="operatetime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    OPERATEID, USERID, OPERATENAME, OBJECTID, OPERATEDESC, OPERATETIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.OPERATELOG
+    where OPERATEID = #{operateid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.OPERATELOG
+    where OPERATEID = #{operateid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Operatelog" >
+    insert into OA.OPERATELOG (OPERATEID, USERID, OPERATENAME, 
+      OBJECTID, OPERATEDESC, OPERATETIME
+      )
+    values (#{operateid,jdbcType=DECIMAL}, #{userid,jdbcType=VARCHAR}, #{operatename,jdbcType=VARCHAR}, 
+      #{objectid,jdbcType=VARCHAR}, #{operatedesc,jdbcType=VARCHAR}, #{operatetime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Operatelog" >
+    insert into OA.OPERATELOG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="operateid != null" >
+        OPERATEID,
+      </if>
+      <if test="userid != null" >
+        USERID,
+      </if>
+      <if test="operatename != null" >
+        OPERATENAME,
+      </if>
+      <if test="objectid != null" >
+        OBJECTID,
+      </if>
+      <if test="operatedesc != null" >
+        OPERATEDESC,
+      </if>
+      <if test="operatetime != null" >
+        OPERATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="operateid != null" >
+        #{operateid,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="operatename != null" >
+        #{operatename,jdbcType=VARCHAR},
+      </if>
+      <if test="objectid != null" >
+        #{objectid,jdbcType=VARCHAR},
+      </if>
+      <if test="operatedesc != null" >
+        #{operatedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="operatetime != null" >
+        #{operatetime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Operatelog" >
+    update OA.OPERATELOG
+    <set >
+      <if test="userid != null" >
+        USERID = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="operatename != null" >
+        OPERATENAME = #{operatename,jdbcType=VARCHAR},
+      </if>
+      <if test="objectid != null" >
+        OBJECTID = #{objectid,jdbcType=VARCHAR},
+      </if>
+      <if test="operatedesc != null" >
+        OPERATEDESC = #{operatedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="operatetime != null" >
+        OPERATETIME = #{operatetime,jdbcType=DATE},
+      </if>
+    </set>
+    where OPERATEID = #{operateid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Operatelog" >
+    update OA.OPERATELOG
+    set USERID = #{userid,jdbcType=VARCHAR},
+      OPERATENAME = #{operatename,jdbcType=VARCHAR},
+      OBJECTID = #{objectid,jdbcType=VARCHAR},
+      OPERATEDESC = #{operatedesc,jdbcType=VARCHAR},
+      OPERATETIME = #{operatetime,jdbcType=DATE}
+    where OPERATEID = #{operateid,jdbcType=DECIMAL}
+  </update>
+</mapper>

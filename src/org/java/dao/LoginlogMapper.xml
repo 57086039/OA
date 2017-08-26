@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.LoginlogMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Loginlog" >
+    <id column="LOGINID" property="loginid" jdbcType="DECIMAL" />
+    <result column="USERID" property="userid" jdbcType="VARCHAR" />
+    <result column="LOGINTIME" property="logintime" jdbcType="DATE" />
+    <result column="IFSUCCESS" property="ifsuccess" jdbcType="DECIMAL" />
+    <result column="LOGINUSERIP" property="loginuserip" jdbcType="VARCHAR" />
+    <result column="LOGINDESC" property="logindesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    LOGINID, USERID, LOGINTIME, IFSUCCESS, LOGINUSERIP, LOGINDESC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.LOGINLOG
+    where LOGINID = #{loginid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.LOGINLOG
+    where LOGINID = #{loginid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Loginlog" >
+    insert into OA.LOGINLOG (LOGINID, USERID, LOGINTIME, 
+      IFSUCCESS, LOGINUSERIP, LOGINDESC
+      )
+    values (#{loginid,jdbcType=DECIMAL}, #{userid,jdbcType=VARCHAR}, #{logintime,jdbcType=DATE}, 
+      #{ifsuccess,jdbcType=DECIMAL}, #{loginuserip,jdbcType=VARCHAR}, #{logindesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Loginlog" >
+    insert into OA.LOGINLOG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="loginid != null" >
+        LOGINID,
+      </if>
+      <if test="userid != null" >
+        USERID,
+      </if>
+      <if test="logintime != null" >
+        LOGINTIME,
+      </if>
+      <if test="ifsuccess != null" >
+        IFSUCCESS,
+      </if>
+      <if test="loginuserip != null" >
+        LOGINUSERIP,
+      </if>
+      <if test="logindesc != null" >
+        LOGINDESC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="loginid != null" >
+        #{loginid,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="logintime != null" >
+        #{logintime,jdbcType=DATE},
+      </if>
+      <if test="ifsuccess != null" >
+        #{ifsuccess,jdbcType=DECIMAL},
+      </if>
+      <if test="loginuserip != null" >
+        #{loginuserip,jdbcType=VARCHAR},
+      </if>
+      <if test="logindesc != null" >
+        #{logindesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Loginlog" >
+    update OA.LOGINLOG
+    <set >
+      <if test="userid != null" >
+        USERID = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="logintime != null" >
+        LOGINTIME = #{logintime,jdbcType=DATE},
+      </if>
+      <if test="ifsuccess != null" >
+        IFSUCCESS = #{ifsuccess,jdbcType=DECIMAL},
+      </if>
+      <if test="loginuserip != null" >
+        LOGINUSERIP = #{loginuserip,jdbcType=VARCHAR},
+      </if>
+      <if test="logindesc != null" >
+        LOGINDESC = #{logindesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where LOGINID = #{loginid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Loginlog" >
+    update OA.LOGINLOG
+    set USERID = #{userid,jdbcType=VARCHAR},
+      LOGINTIME = #{logintime,jdbcType=DATE},
+      IFSUCCESS = #{ifsuccess,jdbcType=DECIMAL},
+      LOGINUSERIP = #{loginuserip,jdbcType=VARCHAR},
+      LOGINDESC = #{logindesc,jdbcType=VARCHAR}
+    where LOGINID = #{loginid,jdbcType=DECIMAL}
+  </update>
+</mapper>

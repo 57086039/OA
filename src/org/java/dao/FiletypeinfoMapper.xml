@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.FiletypeinfoMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Filetypeinfo" >
+    <id column="FILETYPEID" property="filetypeid" jdbcType="DECIMAL" />
+    <result column="FILETYPENAME" property="filetypename" jdbcType="VARCHAR" />
+    <result column="FILETYPEIMAGE" property="filetypeimage" jdbcType="VARCHAR" />
+    <result column="FILETYPESUFFIX" property="filetypesuffix" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    FILETYPEID, FILETYPENAME, FILETYPEIMAGE, FILETYPESUFFIX
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.FILETYPEINFO
+    where FILETYPEID = #{filetypeid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.FILETYPEINFO
+    where FILETYPEID = #{filetypeid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Filetypeinfo" >
+    insert into OA.FILETYPEINFO (FILETYPEID, FILETYPENAME, FILETYPEIMAGE, 
+      FILETYPESUFFIX)
+    values (#{filetypeid,jdbcType=DECIMAL}, #{filetypename,jdbcType=VARCHAR}, #{filetypeimage,jdbcType=VARCHAR}, 
+      #{filetypesuffix,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Filetypeinfo" >
+    insert into OA.FILETYPEINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="filetypeid != null" >
+        FILETYPEID,
+      </if>
+      <if test="filetypename != null" >
+        FILETYPENAME,
+      </if>
+      <if test="filetypeimage != null" >
+        FILETYPEIMAGE,
+      </if>
+      <if test="filetypesuffix != null" >
+        FILETYPESUFFIX,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="filetypeid != null" >
+        #{filetypeid,jdbcType=DECIMAL},
+      </if>
+      <if test="filetypename != null" >
+        #{filetypename,jdbcType=VARCHAR},
+      </if>
+      <if test="filetypeimage != null" >
+        #{filetypeimage,jdbcType=VARCHAR},
+      </if>
+      <if test="filetypesuffix != null" >
+        #{filetypesuffix,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Filetypeinfo" >
+    update OA.FILETYPEINFO
+    <set >
+      <if test="filetypename != null" >
+        FILETYPENAME = #{filetypename,jdbcType=VARCHAR},
+      </if>
+      <if test="filetypeimage != null" >
+        FILETYPEIMAGE = #{filetypeimage,jdbcType=VARCHAR},
+      </if>
+      <if test="filetypesuffix != null" >
+        FILETYPESUFFIX = #{filetypesuffix,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FILETYPEID = #{filetypeid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Filetypeinfo" >
+    update OA.FILETYPEINFO
+    set FILETYPENAME = #{filetypename,jdbcType=VARCHAR},
+      FILETYPEIMAGE = #{filetypeimage,jdbcType=VARCHAR},
+      FILETYPESUFFIX = #{filetypesuffix,jdbcType=VARCHAR}
+    where FILETYPEID = #{filetypeid,jdbcType=DECIMAL}
+  </update>
+</mapper>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.DepartinfoMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Departinfo" >
+    <id column="DEPARTID" property="departid" jdbcType="DECIMAL" />
+    <result column="DEPARTNAME" property="departname" jdbcType="VARCHAR" />
+    <result column="USERID" property="userid" jdbcType="VARCHAR" />
+    <result column="CONNECTTELNO" property="connecttelno" jdbcType="VARCHAR" />
+    <result column="CONNECTMOBILETELNO" property="connectmobiletelno" jdbcType="VARCHAR" />
+    <result column="FAXES" property="faxes" jdbcType="VARCHAR" />
+    <result column="BRANCHID" property="branchid" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    DEPARTID, DEPARTNAME, USERID, CONNECTTELNO, CONNECTMOBILETELNO, FAXES, BRANCHID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.DEPARTINFO
+    where DEPARTID = #{departid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.DEPARTINFO
+    where DEPARTID = #{departid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Departinfo" >
+    insert into OA.DEPARTINFO (DEPARTID, DEPARTNAME, USERID, 
+      CONNECTTELNO, CONNECTMOBILETELNO, FAXES, 
+      BRANCHID)
+    values (#{departid,jdbcType=DECIMAL}, #{departname,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
+      #{connecttelno,jdbcType=VARCHAR}, #{connectmobiletelno,jdbcType=VARCHAR}, #{faxes,jdbcType=VARCHAR}, 
+      #{branchid,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Departinfo" >
+    insert into OA.DEPARTINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="departid != null" >
+        DEPARTID,
+      </if>
+      <if test="departname != null" >
+        DEPARTNAME,
+      </if>
+      <if test="userid != null" >
+        USERID,
+      </if>
+      <if test="connecttelno != null" >
+        CONNECTTELNO,
+      </if>
+      <if test="connectmobiletelno != null" >
+        CONNECTMOBILETELNO,
+      </if>
+      <if test="faxes != null" >
+        FAXES,
+      </if>
+      <if test="branchid != null" >
+        BRANCHID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="departid != null" >
+        #{departid,jdbcType=DECIMAL},
+      </if>
+      <if test="departname != null" >
+        #{departname,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="connecttelno != null" >
+        #{connecttelno,jdbcType=VARCHAR},
+      </if>
+      <if test="connectmobiletelno != null" >
+        #{connectmobiletelno,jdbcType=VARCHAR},
+      </if>
+      <if test="faxes != null" >
+        #{faxes,jdbcType=VARCHAR},
+      </if>
+      <if test="branchid != null" >
+        #{branchid,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Departinfo" >
+    update OA.DEPARTINFO
+    <set >
+      <if test="departname != null" >
+        DEPARTNAME = #{departname,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        USERID = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="connecttelno != null" >
+        CONNECTTELNO = #{connecttelno,jdbcType=VARCHAR},
+      </if>
+      <if test="connectmobiletelno != null" >
+        CONNECTMOBILETELNO = #{connectmobiletelno,jdbcType=VARCHAR},
+      </if>
+      <if test="faxes != null" >
+        FAXES = #{faxes,jdbcType=VARCHAR},
+      </if>
+      <if test="branchid != null" >
+        BRANCHID = #{branchid,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where DEPARTID = #{departid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Departinfo" >
+    update OA.DEPARTINFO
+    set DEPARTNAME = #{departname,jdbcType=VARCHAR},
+      USERID = #{userid,jdbcType=VARCHAR},
+      CONNECTTELNO = #{connecttelno,jdbcType=VARCHAR},
+      CONNECTMOBILETELNO = #{connectmobiletelno,jdbcType=VARCHAR},
+      FAXES = #{faxes,jdbcType=VARCHAR},
+      BRANCHID = #{branchid,jdbcType=DECIMAL}
+    where DEPARTID = #{departid,jdbcType=DECIMAL}
+  </update>
+</mapper>

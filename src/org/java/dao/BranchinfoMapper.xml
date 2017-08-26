@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.BranchinfoMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Branchinfo" >
+    <id column="BRANCHID" property="branchid" jdbcType="DECIMAL" />
+    <result column="BRANCHNAME" property="branchname" jdbcType="VARCHAR" />
+    <result column="BRANCHSHORTNAME" property="branchshortname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BRANCHID, BRANCHNAME, BRANCHSHORTNAME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.BRANCHINFO
+    where BRANCHID = #{branchid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.BRANCHINFO
+    where BRANCHID = #{branchid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Branchinfo" >
+    insert into OA.BRANCHINFO (BRANCHID, BRANCHNAME, BRANCHSHORTNAME
+      )
+    values (#{branchid,jdbcType=DECIMAL}, #{branchname,jdbcType=VARCHAR}, #{branchshortname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Branchinfo" >
+    insert into OA.BRANCHINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="branchid != null" >
+        BRANCHID,
+      </if>
+      <if test="branchname != null" >
+        BRANCHNAME,
+      </if>
+      <if test="branchshortname != null" >
+        BRANCHSHORTNAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="branchid != null" >
+        #{branchid,jdbcType=DECIMAL},
+      </if>
+      <if test="branchname != null" >
+        #{branchname,jdbcType=VARCHAR},
+      </if>
+      <if test="branchshortname != null" >
+        #{branchshortname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Branchinfo" >
+    update OA.BRANCHINFO
+    <set >
+      <if test="branchname != null" >
+        BRANCHNAME = #{branchname,jdbcType=VARCHAR},
+      </if>
+      <if test="branchshortname != null" >
+        BRANCHSHORTNAME = #{branchshortname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BRANCHID = #{branchid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Branchinfo" >
+    update OA.BRANCHINFO
+    set BRANCHNAME = #{branchname,jdbcType=VARCHAR},
+      BRANCHSHORTNAME = #{branchshortname,jdbcType=VARCHAR}
+    where BRANCHID = #{branchid,jdbcType=DECIMAL}
+  </update>
+</mapper>

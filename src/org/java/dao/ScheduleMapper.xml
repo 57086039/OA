@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.ScheduleMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.oa.Schedule" >
+    <id column="SCHEDULEID" property="scheduleid" jdbcType="DECIMAL" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="MEETINGID" property="meetingid" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SCHEDULEID, TITLE, ADDRESS, MEETINGID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OA.SCHEDULE
+    where SCHEDULEID = #{scheduleid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OA.SCHEDULE
+    where SCHEDULEID = #{scheduleid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.oa.Schedule" >
+    insert into OA.SCHEDULE (SCHEDULEID, TITLE, ADDRESS, 
+      MEETINGID)
+    values (#{scheduleid,jdbcType=DECIMAL}, #{title,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{meetingid,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.oa.Schedule" >
+    insert into OA.SCHEDULE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="scheduleid != null" >
+        SCHEDULEID,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="meetingid != null" >
+        MEETINGID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="scheduleid != null" >
+        #{scheduleid,jdbcType=DECIMAL},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="meetingid != null" >
+        #{meetingid,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Schedule" >
+    update OA.SCHEDULE
+    <set >
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="meetingid != null" >
+        MEETINGID = #{meetingid,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where SCHEDULEID = #{scheduleid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Schedule" >
+    update OA.SCHEDULE
+    set TITLE = #{title,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      MEETINGID = #{meetingid,jdbcType=DECIMAL}
+    where SCHEDULEID = #{scheduleid,jdbcType=DECIMAL}
+  </update>
+</mapper>
