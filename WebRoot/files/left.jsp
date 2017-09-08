@@ -211,12 +211,12 @@ function list(idstr){
         
 		<tr>
           <td width="9%" height="20" ><img id="xiaotu7" src="../images/ico06.gif" width="8" height="12" /></td>
-          <td width="91%"><a href="listkehuxinxi.html" target="mainFrame" class="left-font03" onClick="tupian('7');">消息管理</a></td>
+          <td width="91%"><a href="<%=path %>/luwei/guanli.do" target="mainFrame" class="left-font03" onClick="tupian('7');">消息管理</a></td>
         </tr>
         
         <tr>
           <td width="9%" height="20" ><img id="xiaotu7" src="../images/ico06.gif" width="8" height="12" /></td>
-          <td width="91%"><a href="listkehuxinxi.html" target="mainFrame" class="left-font03" onClick="tupian('7');">信箱</a></td>
+          <td width="91%"><a href="listkehuxinxi.jsp" target="mainFrame" class="left-font03" onClick="tupian('7');">信箱</a></td>
         </tr>
       </table>
 

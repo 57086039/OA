@@ -156,4 +156,8 @@
       RECORDTIME = #{recordtime,jdbcType=DATE}
     where MESSAGEID = #{messageid,jdbcType=DECIMAL}
   </update>
+   <select id="findByXiaoXi" resultType="java.util.HashMap">
+       select m.*,u.username as uname from Message m,UserInfo u where BeginTime between to_date(#{kaishi},'yyyy-MM-dd') and   to_date(#{jieshu},'yyyy-MM-dd') and m.fromuserid=u.userid
+
+   </select>
 </mapper>

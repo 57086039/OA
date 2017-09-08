@@ -1,14 +1,14 @@
 
 var _D			//div
-var div_Top;		//²ã¶¥×ø±ê
-var div_Id;		//²ãµÄÃû×Ö
-var div_Left;		//²ã×ó±ß×ø±ê
-var div_Width;		//²ãµÄ¿í¶È
-var div_Height;		//²ãµÄ¸ß¶È
-var doc_Height;		//´°¿Úµ±Ç°×Ü¸ß¶È
-var doc_Width;		//´°¿Úµ±Ç°¿í¶È
+var div_Top;		//å±‚é¡¶åæ ‡
+var div_Id;		//å±‚çš„åå­—
+var div_Left;		//å±‚å·¦è¾¹åæ ‡
+var div_Width;		//å±‚çš„å®½åº¦
+var div_Height;		//å±‚çš„é«˜åº¦
+var doc_Height;		//çª—å£å½“å‰æ€»é«˜åº¦
+var doc_Width;		//çª—å£å½“å‰å®½åº¦
 
-//style¶ÔÏóÖĞµÄÊôĞÔ
+//styleå¯¹è±¡ä¸­çš„å±æ€§
 var _style;
 var style_Top;
 var style_Left;
@@ -22,13 +22,13 @@ var T = function (divId){
 	_style.display="";
 }
 
-//»ñÈ¡ÊôĞÔ
+//è·å–å±æ€§
 var init = function (divId){
 	_D =		document.getElementById(divId);
-	div_Top =    parseInt(document.getElementById(divId).style.top,10)			//»ñÈ¡¸ß
-	div_Left =   parseInt(document.getElementById(divId).style.left,10)			//divµÄy×ø±ê
-    div_Height = parseInt(document.getElementById(divId).offsetHeight,10)		//divµÄ¸ß¶È
-    div_Width =	 parseInt(document.getElementById(divId).offsetWidth,10)		//divµÄ¿í¶È	
+	div_Top =    parseInt(document.getElementById(divId).style.top,10)			//è·å–é«˜
+	div_Left =   parseInt(document.getElementById(divId).style.left,10)			//divçš„yåæ ‡
+    div_Height = parseInt(document.getElementById(divId).offsetHeight,10)		//divçš„é«˜åº¦
+    div_Width =	 parseInt(document.getElementById(divId).offsetWidth,10)		//divçš„å®½åº¦	
 	arrayScroll		=	 getPageScroll();
 	arrayPageSize	=    getPageSize();
 	_style = divId.style;
@@ -36,13 +36,13 @@ var init = function (divId){
 	style_Left= divId.style.left;
 }
 
-//Ôö¼ÓµÄ·½·¨
+//å¢åŠ çš„æ–¹æ³•
 var addTM = function (x,y){
-	//»ñÈ¡Öµ
+	//è·å–å€¼
 	var td1 = document.getElementById("gztype").value;
 	var td2 = document.getElementById("jinge").value;
 
-	//±í¸ñ²åÈë
+	//è¡¨æ ¼æ’å…¥
 	var _T = document.getElementById("t2");
 	var R_ind = _T.rows.Length;
 	var objTR = objTable.insertRow(R_ind);  
@@ -52,7 +52,7 @@ var addTM = function (x,y){
 	objTD_2.innerHTML="<td>"+td2+"</td>";
 }
 
-//»ñÈ¡getPageSize
+//è·å–getPageSize
 var getPageSize = function () {
 	var de = document.documentElement;
 	var w = window.innerWidth || self.innerWidth || (de&&de.clientWidth) || document.body.clientWidth;
@@ -61,7 +61,7 @@ var getPageSize = function () {
 	return arrayPageSize;
 }
 
-//»ñÈ¡pageScrollTop
+//è·å–pageScrollTop
 var getPageScroll = function (){
 	var yScrolltop;
 	var xScrollleft;

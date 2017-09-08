@@ -30,9 +30,9 @@ public class UserController {
 	@Autowired
 	HttpServletRequest req;
 	
-	//Ëæ»úÊıÀà
+	//éšæœºæ•°ç±»
 	private Random rd = new Random();
-	//±àĞ´Ò»¸ö×Ö·û´®£¬ÓÃÓÚËæ»úÈ¡×Ö·û
+	//ç¼–å†™ä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œç”¨äºéšæœºå–å­—ç¬¦
 	String str="0123456789abcdefghijklmnorqrstuvwxyzABCDEFGHIJKLMNORQRSTUVWXYZ";
 	
 	@RequestMapping("/user/login")
@@ -47,12 +47,12 @@ public class UserController {
 		Map<String, Object> user=loginservice.login(info);
 		System.out.println(user);
 		if(!code.equals(codes)){
-			ses.setAttribute("err", "ÑéÖ¤ÂëÊäÈë´íÎó");
+			ses.setAttribute("err", "éªŒè¯ç è¾“å…¥é”™è¯¯");
 		//	System.out.println("dddddddddddddddddddddddddddddddddddd");
 			return "redirect:/login.jsp";
 		}else if(user==null){
 			//System.out.println("ttttttttttttttttttttttttttttttttttt");
-			ses.setAttribute("err", "ÓÃ»§Ãû»òÃÜÂë´íÎó");
+			ses.setAttribute("err", "ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯");
 			return "redirect:/login.jsp";
 		}else{
 			//System.out.println("ssssssssssssssssssssssssssssssssss");
@@ -67,42 +67,42 @@ public class UserController {
 	public void Yanzm(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		
 		request.getSession().removeAttribute("err");
-		//ÉèÖÃÏìÓ¦µÄÀàĞÍ£¬·µ»ØµÄ½á¹ûÊÇÒ»ÕÅÍ¼Æ¬
+		//è®¾ç½®å“åº”çš„ç±»å‹ï¼Œè¿”å›çš„ç»“æœæ˜¯ä¸€å¼ å›¾ç‰‡
 				response.setContentType("image/jpeg");
 				
-				//´´½¨Í¼ĞÎ»º³åÇø(¿í£¬¸ß£¬ÑÕÉ«ÀàĞÍ)
+				//åˆ›å»ºå›¾å½¢ç¼“å†²åŒº(å®½ï¼Œé«˜ï¼Œé¢œè‰²ç±»å‹)
 				BufferedImage image = new BufferedImage(100,40,BufferedImage.TYPE_INT_RGB);
 				
-				//ÀûÓÃÍ¼ĞÎ»º³åÇø£¬²úÉú»­±Ê£¬ÓÃÓÚ»æÍ¼
+				//åˆ©ç”¨å›¾å½¢ç¼“å†²åŒºï¼Œäº§ç”Ÿç”»ç¬”ï¼Œç”¨äºç»˜å›¾
 				 Graphics g =image.getGraphics();
 				 
 				 
 				 
 				 
-				 /**********************»­±³¾°¿ò***********************************************/
-				 //Ö¸¶¨»­±ÊµÄÑÕÉ« 
+				 /**********************ç”»èƒŒæ™¯æ¡†***********************************************/
+				 //æŒ‡å®šç”»ç¬”çš„é¢œè‰² 
 				 g.setColor(getColor(200,256));
 				 
-				 //»æÖÆÑéÖ¤ÂëµÄ±³¾°¿ò----------»æÖÆÒ»¸ö¾ØĞÎ¿ò³äµ±±³¾°(x,y,width,height)
+				 //ç»˜åˆ¶éªŒè¯ç çš„èƒŒæ™¯æ¡†----------ç»˜åˆ¶ä¸€ä¸ªçŸ©å½¢æ¡†å……å½“èƒŒæ™¯(x,y,width,height)
 				 g.fillRect(0,0, 100,80);
 				 
 			
-				 /*************************²úÉúËÄ¸öËæ»ú×Ö·û£¬ÏÔÊ¾ÔÚÍ¼Æ¬ÉÏ*******************************************/
+				 /*************************äº§ç”Ÿå››ä¸ªéšæœºå­—ç¬¦ï¼Œæ˜¾ç¤ºåœ¨å›¾ç‰‡ä¸Š*******************************************/
 				 String code="";
 				 for(int i=0;i<4;i++){
-					 int index = rd.nextInt(str.length());//µÃµ½Ò»¸öÏÂ±ê£¬ÖµÔÚÔÚ×Ö·û´®³¤¶ÈµÄ·¶Î§Àà
-					 char chr = str.charAt(index);//Í¨¹ıÏÂ±ê£¬È¡µÃ×Ö·û
-					 g.setColor(getColor(0,120));//Ö¸¶¨ÎÄ×ÖµÄ±³¾°
+					 int index = rd.nextInt(str.length());//å¾—åˆ°ä¸€ä¸ªä¸‹æ ‡ï¼Œå€¼åœ¨åœ¨å­—ç¬¦ä¸²é•¿åº¦çš„èŒƒå›´ç±»
+					 char chr = str.charAt(index);//é€šè¿‡ä¸‹æ ‡ï¼Œå–å¾—å­—ç¬¦
+					 g.setColor(getColor(0,120));//æŒ‡å®šæ–‡å­—çš„èƒŒæ™¯
 					 
-					 Font f = new Font("Á¥Êé",Font.ITALIC|Font.BOLD,15+rd.nextInt(10));//Ö¸¶¨Ëæ»ú×ÖÌå
-					 g.setFont(f);//ÉèÖÃ»­±ÊµÄ×ÖÌå 
+					 Font f = new Font("éš¶ä¹¦",Font.ITALIC|Font.BOLD,15+rd.nextInt(10));//æŒ‡å®šéšæœºå­—ä½“
+					 g.setFont(f);//è®¾ç½®ç”»ç¬”çš„å­—ä½“ 
 					 
 					 g.drawString(String.valueOf(chr),10+i*20+rd.nextInt(10),15+rd.nextInt(15));
-					 code+=chr;//±£´æ£¬Éú³ÉµÄÑéÖ¤Âë
+					 code+=chr;//ä¿å­˜ï¼Œç”Ÿæˆçš„éªŒè¯ç 
 				 }
 				// System.out.println(code);
-				 request.getSession().setAttribute("code",code);//°ÑÑéÖ¤Âë£¬´æ·ÅÔÚsession
-				 /***************************²úÉú¸ÉÈÅÏß******************************************/
+				 request.getSession().setAttribute("code",code);//æŠŠéªŒè¯ç ï¼Œå­˜æ”¾åœ¨session
+				 /***************************äº§ç”Ÿå¹²æ‰°çº¿******************************************/
 				 for(int i=0;i<100;i++){
 					 int x1 = rd.nextInt(100);
 					 int y1 = rd.nextInt(80);
@@ -110,8 +110,8 @@ public class UserController {
 					 int x2 = rd.nextInt(5);
 					 int y2 = rd.nextInt(5);
 					 
-					 g.setColor(getColor(100,200));//ÉèÖÃÏßÌõµÄÑÕÉ« 
-					 g.drawLine(x1, y1, x1+x2, y1+y2);//²úÉúËæ»úÏßÌõ
+					 g.setColor(getColor(100,200));//è®¾ç½®çº¿æ¡çš„é¢œè‰² 
+					 g.drawLine(x1, y1, x1+x2, y1+y2);//äº§ç”Ÿéšæœºçº¿æ¡
 				 }
 				 
 				 
@@ -120,25 +120,25 @@ public class UserController {
 				 
 				 
 				 
-				 //²úÉúÊä³öÁ÷£¬ÓÃÓÚ½«»æÖÆµÄÍ¼ĞÎÊä³öµ½¿Í»§¶Ëä¯ÀÀÆ÷
+				 //äº§ç”Ÿè¾“å‡ºæµï¼Œç”¨äºå°†ç»˜åˆ¶çš„å›¾å½¢è¾“å‡ºåˆ°å®¢æˆ·ç«¯æµè§ˆå™¨
 				 OutputStream out = response.getOutputStream();
 				 
-				 //Êä³ö Í¼ĞÎ(Í¼ĞÎ»º³åÇø£¬Í¼Æ¬µÄ¸ñÊ½£¬ÓÃÄÄÒ»¸öÊä³öÁ÷À´½øĞĞÊä³ö)
+				 //è¾“å‡º å›¾å½¢(å›¾å½¢ç¼“å†²åŒºï¼Œå›¾ç‰‡çš„æ ¼å¼ï¼Œç”¨å“ªä¸€ä¸ªè¾“å‡ºæµæ¥è¿›è¡Œè¾“å‡º)
 				 ImageIO.write(image, "jpg", out);
 				 
 				 out.flush();
 				 
-				 //¹Ø±ÕÁ÷
+				 //å…³é—­æµ
 				 
 				 out.close();
 	}
 	/**
-	 * Éú³ÉÑÕÉ«µÄ·½·¨
+	 * ç”Ÿæˆé¢œè‰²çš„æ–¹æ³•
 	 * @return
-	 * ÑÕÉ«µÄÈ¡Öµ·¶Î§ÊÇ: 0-255
-	 * ÖµÔ½Ğ¡£¬ÑÕÉ«Ô½Éî
-	 * start:¿ªÊ¼·¶Î§
-	 * end:½áÊø·¶Î§ 
+	 * é¢œè‰²çš„å–å€¼èŒƒå›´æ˜¯: 0-255
+	 * å€¼è¶Šå°ï¼Œé¢œè‰²è¶Šæ·±
+	 * start:å¼€å§‹èŒƒå›´
+	 * end:ç»“æŸèŒƒå›´ 
 	 */                 
 	private Color getColor(int start,int end){
 		

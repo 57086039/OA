@@ -8,7 +8,7 @@ var init = function(){
 
 
 
-//获取getPageSize
+//鑾峰彇getPageSize
 var getPageSize = function () {
 	var de = document.documentElement;
 	var w = window.innerWidth || self.innerWidth || (de&&de.clientWidth) || document.body.clientWidth;
@@ -17,7 +17,7 @@ var getPageSize = function () {
 	return arrayPageSize;
 }
 
-//获取pageScrollTop
+//鑾峰彇pageScrollTop
 var getPageScroll = function (){
 	var yScrolltop;
 	var xScrollleft;
