@@ -15,15 +15,15 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from OA.LOGINLOG
+    from LOGINLOG
     where LOGINID = #{loginid,jdbcType=DECIMAL}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from OA.LOGINLOG
+    delete from LOGINLOG
     where LOGINID = #{loginid,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="org.java.entity.oa.Loginlog" >
-    insert into OA.LOGINLOG (LOGINID, USERID, LOGINTIME, 
+    insert into LOGINLOG (LOGINID, USERID, LOGINTIME, 
       IFSUCCESS, LOGINUSERIP, LOGINDESC
       )
     values (#{loginid,jdbcType=DECIMAL}, #{userid,jdbcType=VARCHAR}, #{logintime,jdbcType=DATE}, 
@@ -31,7 +31,7 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="org.java.entity.oa.Loginlog" >
-    insert into OA.LOGINLOG
+    insert into LOGINLOG
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="loginid != null" >
         LOGINID,
@@ -74,7 +74,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Loginlog" >
-    update OA.LOGINLOG
+    update LOGINLOG
     <set >
       <if test="userid != null" >
         USERID = #{userid,jdbcType=VARCHAR},
@@ -95,7 +95,7 @@
     where LOGINID = #{loginid,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Loginlog" >
-    update OA.LOGINLOG
+    update LOGINLOG
     set USERID = #{userid,jdbcType=VARCHAR},
       LOGINTIME = #{logintime,jdbcType=DATE},
       IFSUCCESS = #{ifsuccess,jdbcType=DECIMAL},
@@ -103,4 +103,29 @@
       LOGINDESC = #{logindesc,jdbcType=VARCHAR}
     where LOGINID = #{loginid,jdbcType=DECIMAL}
   </update>
+  
+  
+  <select id="selectAll" parameterType="map" resultType="m">
+    
+  		select * from (
+ 
+   select s.*,rownum r from (select l.*,u.username from loginlog l ,UserInfo u where u.userid=l.userid) s where 1=1 
+  	<if test="startDate!=null and startDate!=''">
+and logintime between  to_date(#{startDate},'yyyy-mm-dd') and  to_date(#{endDate},'yyyy-mm-dd') <!-- order by s.loginid #{sort} -->
+	</if>
+    <if test="dates!=null and dates!=''">
+  		and logintime=to_date(#{date},'yyyy-mm-dd')
+  	</if> 
+  	) aa where 1=1 
+ 	<if test="start!=null and start!=''">
+  		 and aa.r between #{start} and #{end}
+  	</if>  
+  </select>
+  
+  <select id="selectRows" resultType="long">
+  	select count(*) from loginlog
+  </select>
+  
+  
+  
 </mapper>

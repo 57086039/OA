@@ -1,4 +1,14 @@
 eclipse.preferences.version=1
+encoding//WebRoot/files/aw/listMonthYuanGongGongZi.jsp=UTF-8
+encoding//WebRoot/files/aw/tree.jsp=UTF-8
 encoding//WebRoot/files/left.jsp=UTF-8
+encoding//WebRoot/files/listyuangong.jsp=UTF-8
+encoding//WebRoot/files/listzhiwu.jsp=UTF-8
 encoding//WebRoot/files/mainfra.jsp=UTF-8
 encoding//WebRoot/index.jsp=UTF-8
+encoding//WebRoot/js/Loginlog.js=UTF-8
+encoding//WebRoot/js/operatelog.js=UTF-8
+encoding//WebRoot/js/tree.js=UTF-8
+encoding//src/org/java/web=UTF-8
+encoding//src/org/java/web/ALoginlogContorller.java=UTF-8
+encoding//src/org/java/web/UserController.java=UTF-8

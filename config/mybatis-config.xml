@@ -4,5 +4,9 @@
 	<typeAliases>
 		<typeAlias type="org.java.entity.oa.Userinfo" alias="f"/>
 		<typeAlias type="java.util.Map" alias="m"/>
+		<typeAlias type="java.util.List" alias="l"/>
+		<typeAlias type="org.java.entity.oa.Roleinfo" alias="roleinfo"/>
+		<typeAlias type="org.java.entity.oa.Loginlog" alias="loginlog"/>
+		<typeAlias type="java.lang.Long" alias="long"/>
 	</typeAliases>
 </configuration>

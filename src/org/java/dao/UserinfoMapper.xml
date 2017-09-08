@@ -16,15 +16,15 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    from OA.USERINFO
+    from USERINFO
     where USERID = #{userid,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from OA.USERINFO
+    delete from USERINFO
     where USERID = #{userid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="org.java.entity.oa.Userinfo" >
-    insert into OA.USERINFO (USERID, USERNAME, PASSWORD, 
+    insert into USERINFO (USERID, USERNAME, PASSWORD, 
       DEPARTID, GENDER, ROLEID, 
       USERSTATEID)
     values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
@@ -32,7 +32,7 @@
       #{userstateid,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="org.java.entity.oa.Userinfo" >
-    insert into OA.USERINFO
+    insert into USERINFO
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userid != null" >
         USERID,
@@ -81,7 +81,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Userinfo" >
-    update OA.USERINFO
+    update USERINFO
     <set >
       <if test="username != null" >
         USERNAME = #{username,jdbcType=VARCHAR},
@@ -105,7 +105,7 @@
     where USERID = #{userid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Userinfo" >
-    update OA.USERINFO
+    update USERINFO
     set USERNAME = #{username,jdbcType=VARCHAR},
       PASSWORD = #{password,jdbcType=VARCHAR},
       DEPARTID = #{departid,jdbcType=DECIMAL},

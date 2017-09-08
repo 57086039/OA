@@ -1,5 +1,8 @@
 package org.java.dao;
 
+import java.util.LinkedList;
+import java.util.Map;
+
 import org.java.entity.oa.Operatelog;
 
 public interface OperatelogMapper {
@@ -14,4 +17,10 @@ public interface OperatelogMapper {
     int updateByPrimaryKeySelective(Operatelog record);
 
     int updateByPrimaryKey(Operatelog record);
+    
+    /**
+     * ²éÑ¯ËùÓÐ
+     * @return
+     */
+    LinkedList<Map<String, Object>> selectAll(Map<String, Object>map);
 }

@@ -1,5 +1,10 @@
 package org.java.dao;
 
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
 import org.java.entity.oa.Roleinfo;
 
 public interface RoleinfoMapper {
@@ -14,4 +19,9 @@ public interface RoleinfoMapper {
     int updateByPrimaryKeySelective(Roleinfo record);
 
     int updateByPrimaryKey(Roleinfo record);
+    
+    List<Map<String, Object>>aSelectAllRef();
+    
+    List<Roleinfo> aSelectAll();
+    
 }

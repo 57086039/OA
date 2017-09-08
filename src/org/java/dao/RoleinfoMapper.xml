@@ -12,21 +12,21 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from OA.ROLEINFO
+    from ROLEINFO
     where ROLEID = #{roleid,jdbcType=DECIMAL}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from OA.ROLEINFO
+    delete from ROLEINFO
     where ROLEID = #{roleid,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="org.java.entity.oa.Roleinfo" >
-    insert into OA.ROLEINFO (ROLEID, ROLENAME, ROLEDESC
+    insert into ROLEINFO (ROLEID, ROLENAME, ROLEDESC
       )
     values (#{roleid,jdbcType=DECIMAL}, #{rolename,jdbcType=VARCHAR}, #{roledesc,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="org.java.entity.oa.Roleinfo" >
-    insert into OA.ROLEINFO
+    insert into ROLEINFO
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="roleid != null" >
         ROLEID,
@@ -51,7 +51,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Roleinfo" >
-    update OA.ROLEINFO
+    update ROLEINFO
     <set >
       <if test="rolename != null" >
         ROLENAME = #{rolename,jdbcType=VARCHAR},
@@ -63,9 +63,20 @@
     where ROLEID = #{roleid,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Roleinfo" >
-    update OA.ROLEINFO
+    update ROLEINFO
     set ROLENAME = #{rolename,jdbcType=VARCHAR},
       ROLEDESC = #{roledesc,jdbcType=VARCHAR}
     where ROLEID = #{roleid,jdbcType=DECIMAL}
   </update>
+  
+  
+  <select id="aSelectAllRef" resultType="m">
+		select *from RoleInfo , UserInfo where  roleinfo.roleid=UserInfo.Roleid 
+  </select>
+  
+  <select id="aSelectAll" resultType="roleinfo">
+  	select * from RoleInfo
+  	
+  </select>
+  
 </mapper>

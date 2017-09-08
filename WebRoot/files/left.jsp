@@ -19,6 +19,8 @@ body {
 -->
 </style>
 <link href="../css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<%=path %>/js/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="<%=path %>/js/aLeft.js"></script>
 </head>
 <SCRIPT language=JavaScript>
 function tupian(idt){
@@ -101,7 +103,7 @@ function list(idstr){
 				<table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="8%"><img name="img8" id="img8" src="../images/ico04.gif" width="8" height="11" /></td>
-						<td width="92%">
+						<td width="92%" class="title">
 								<a href="javascript:" target="mainFrame" class="left-font03" onClick="list('8');" >人事管理</a></td>
 					</tr>
 				</table>
@@ -134,7 +136,7 @@ function list(idstr){
 				<table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="8%"><img name="img7" id="img7" src="../images/ico04.gif" width="8" height="11" /></td>
-						<td width="92%">
+						<td width="92%" class="title">
 								<a href="javascript:" target="mainFrame" class="left-font03" onClick="list('7');" >日程管理</a></td>
 					</tr>
 				</table>
@@ -170,7 +172,7 @@ function list(idstr){
 				<table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="8%"><img name="img1" id="img1" src="../images/ico04.gif" width="8" height="11" /></td>
-						<td width="92%">
+						<td width="92%" class="title">
 								<a href="javascript:" target="mainFrame" class="left-font03" onClick="list('1');" >文档管理</a></td>
 					</tr>
 				</table>
@@ -201,7 +203,8 @@ function list(idstr){
             <td height="29"><table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr>
                   <td width="8%" height="12"><img name="img2" id="img2" src="../images/ico04.gif" width="8" height="11" /></td>
-                  <td width="92%"><a href="javascript:" target="mainFrame" class="left-font03" onClick="list('2');" >消息传递</a></td>
+                  <td width="92%" class="title">
+                  <a href="javascript:" target="mainFrame" class="left-font03" onClick="list('2');" >消息传递</a></td>
                 </tr>
             </table></td>
           </tr>
@@ -228,7 +231,7 @@ function list(idstr){
             <td height="29"><table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr>
                   <td width="8%" height="12"><img name="img3" id="img3" src="../images/ico04.gif" width="8" height="11" /></td>
-                  <td width="92%"><a href="javascript:" target="mainFrame" class="left-font03" onClick="list('3');" >系统管理</a></td>
+                  <td width="92%" class="title"><a href="javascript:" target="mainFrame" class="left-font03" onClick="list('3');" >系统管理</a></td>
                 </tr>
             </table></td>
           </tr>
@@ -237,20 +240,20 @@ function list(idstr){
 	  <table id="subtree3" style="DISPLAY: none" width="80%" border="0" align="center" cellpadding="0" cellspacing="0" class="left-table02">
         <tr>
           <td width="9%" height="20" ><img id="xiaotu8" src="../images/ico06.gif" width="8" height="12" /></td>
-          <td width="91%"><a href="listyuangong.html" target="mainFrame" class="left-font03" onClick="tupian('8');">角色管理</a></td>
+          <td width="91%"><a href="../ARoleinfoController/roleinfo.do" target="mainFrame" class="left-font03" >角色管理</a></td>
         </tr>
 		<tr>
           <td width="9%" height="20" ><img id="xiaotu9" src="../images/ico06.gif" width="8" height="12" /></td>
-          <td width="91%"><a href="listzhiwu.htm" target="mainFrame" class="left-font03" onClick="tupian('9');">登录日志</a></td>
+          <td width="91%"><a href="../aLoginlogContorller/show.do" target="mainFrame" class="left-font03" onClick="tupian('9');">登录日志</a></td>
         </tr>
 		<tr>
           <td width="9%" height="20" ><img id="xiaotu10" src="../images/ico06.gif" width="8" height="12" /></td>
-          <td width="91%"><a href="listMonthYuanGongGongZi.htm" target="mainFrame" class="left-font03" onClick="tupian('10');">操作日志</a></td>
+          <td width="91%"><a href="../operatelogController/show.do" target="mainFrame" class="left-font03" onClick="tupian('10');">操作日志</a></td>
         </tr>
         
         <tr>
           <td width="9%" height="20" ><img id="xiaotu10" src="../images/ico06.gif" width="8" height="12" /></td>
-          <td width="91%"><a href="listMonthYuanGongGongZi.htm" target="mainFrame" class="left-font03" onClick="tupian('10');">菜单排序</a></td>
+          <td width="91%"><a href="<%=path%>/files/aw/tree.jsp" target="mainFrame" class="left-font03" onClick="tupian('10');">菜单排序</a></td>
         </tr>
       </table>
 	
@@ -262,7 +265,7 @@ function list(idstr){
             <td height="29"><table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr>
                   <td width="8%" height="12"><img name="img4" id="img4" src="../images/ico04.gif" width="8" height="11" /></td>
-                  <td width="92%"><a href="javascript:" target="mainFrame" class="left-font03" onClick="list('4');" >考勤系统</a></td>
+                  <td width="92%" class="title"><a href="javascript:" target="mainFrame" class="left-font03" onClick="list('4');" >考勤系统</a></td>
                 </tr>
             </table></td>
           </tr>

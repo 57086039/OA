@@ -30,4 +30,11 @@ public class Roleinfo {
     public void setRoledesc(String roledesc) {
         this.roledesc = roledesc;
     }
+
+	@Override
+	public String toString() {
+		return "Roleinfo [roleid=" + roleid + ", rolename=" + rolename
+				+ ", roledesc=" + roledesc + "]";
+	}
+    
 }

@@ -15,15 +15,15 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from OA.OPERATELOG
+    from OPERATELOG
     where OPERATEID = #{operateid,jdbcType=DECIMAL}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from OA.OPERATELOG
+    delete from OPERATELOG
     where OPERATEID = #{operateid,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="org.java.entity.oa.Operatelog" >
-    insert into OA.OPERATELOG (OPERATEID, USERID, OPERATENAME, 
+    insert into OPERATELOG (OPERATEID, USERID, OPERATENAME, 
       OBJECTID, OPERATEDESC, OPERATETIME
       )
     values (#{operateid,jdbcType=DECIMAL}, #{userid,jdbcType=VARCHAR}, #{operatename,jdbcType=VARCHAR}, 
@@ -31,7 +31,7 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="org.java.entity.oa.Operatelog" >
-    insert into OA.OPERATELOG
+    insert into OPERATELOG
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="operateid != null" >
         OPERATEID,
@@ -74,7 +74,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.oa.Operatelog" >
-    update OA.OPERATELOG
+    update OPERATELOG
     <set >
       <if test="userid != null" >
         USERID = #{userid,jdbcType=VARCHAR},
@@ -95,7 +95,7 @@
     where OPERATEID = #{operateid,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.java.entity.oa.Operatelog" >
-    update OA.OPERATELOG
+    update OPERATELOG
     set USERID = #{userid,jdbcType=VARCHAR},
       OPERATENAME = #{operatename,jdbcType=VARCHAR},
       OBJECTID = #{objectid,jdbcType=VARCHAR},
@@ -103,4 +103,23 @@
       OPERATETIME = #{operatetime,jdbcType=DATE}
     where OPERATEID = #{operateid,jdbcType=DECIMAL}
   </update>
+  
+  
+  <select id="selectAll" parameterType="map" resultType="m">
+  		select * from (
+ 
+   select s.*,rownum r from (select l.* from OPERATELOG l ) s where 1=1 
+  	<if test="startDate!=null and startDate!=''">
+and OperateTime between  to_date(#{startDate},'yyyy-mm-dd') and  to_date(#{endDate},'yyyy-mm-dd') <!-- order by s.loginid #{sort} -->
+	</if>
+    <if test="dates!=null and dates!=''">
+  		and OperateTime=to_date(#{date},'yyyy-mm-dd')
+  	</if> 
+  	) aa where 1=1 
+ 	<if test="start!=null and start!=''">
+  		 and aa.r between #{start} and #{end}
+  	</if> 
+  </select>
+  
+  
 </mapper>

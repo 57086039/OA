@@ -18,4 +18,7 @@ public interface UserinfoMapper {
     int updateByPrimaryKey(Userinfo record);
     
     Map<String, Object> findByUname(Userinfo u);
+    
+    
+    
 }

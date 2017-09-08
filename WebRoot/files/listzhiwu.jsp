@@ -1,8 +1,13 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>ÏîÄ¿¹ÜÀíÏµÍ³ by www.mycodes.net</title>
+<title>é¡¹ç›®ç®¡ç†ç³»ç»Ÿ by www.mycodes.net</title>
 <style type="text/css">
 <!--
 body {
@@ -12,25 +17,25 @@ body {
 	margin-bottom: 0px;
 }
 .tabfont01 {	
-	font-family: "ËÎÌå";
+	font-family: "å®‹ä½“";
 	font-size: 9px;
 	color: #555555;
 	text-decoration: none;
 	text-align: center;
 }
-.font051 {font-family: "ËÎÌå";
+.font051 {font-family: "å®‹ä½“";
 	font-size: 12px;
 	color: #333333;
 	text-decoration: none;
 	line-height: 20px;
 }
-.font201 {font-family: "ËÎÌå";
+.font201 {font-family: "å®‹ä½“";
 	font-size: 12px;
 	color: #FF0000;
 	text-decoration: none;
 }
 .button {
-	font-family: "ËÎÌå";
+	font-family: "å®‹ä½“";
 	font-size: 14px;
 	height: 37px;
 }
@@ -97,75 +102,75 @@ function link(){
         <tr>
           <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
           	 <tr>
-               <td height="20"><span class="newfont07">Ñ¡Ôñ£º<a href="#" class="right-font08" onclick="selectAll();">È«Ñ¡</a>-<a href="#" class="right-font08" onclick="unselectAll();">·´Ñ¡</a></span>
-	              <input name="Submit" type="button" class="right-button08" value="É¾³ıËùÑ¡Ö°Î»ĞÅÏ¢" />
-	              <input name="Submit2" type="button" class="right-button08" value="Ìí¼ÓÖ°Î»" onclick="link();"/></td>
+               <td height="20"><span class="newfont07">é€‰æ‹©ï¼š<a href="#" class="right-font08" onclick="selectAll();">å…¨é€‰</a>-<a href="#" class="right-font08" onclick="unselectAll();">åé€‰</a></span>
+	              <input name="Submit" type="button" class="right-button08" value="åˆ é™¤æ‰€é€‰èŒä½ä¿¡æ¯" />
+	              <input name="Submit2" type="button" class="right-button08" value="æ·»åŠ èŒä½" onclick="link();"/></td>
           	 </tr>
               <tr>
                 <td height="40" class="font42"><table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="newfont03">
 
 					                  <tr>
-                    <td height="20" colspan="4" align="center" bgcolor="#EEEEEE"class="tablestyle_title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ö°Î»ÁĞ±í &nbsp;</td>
+                    <td height="20" colspan="4" align="center" bgcolor="#EEEEEE"class="tablestyle_title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; èŒä½åˆ—è¡¨ &nbsp;</td>
                     </tr>
                   <tr>
-				    <td width="5%" align="center" bgcolor="#EEEEEE">Ñ¡Ôñ</td>
-                    <td width="21%" height="20" align="center" bgcolor="#EEEEEE">Ö°Î»Ãû³Æ</td>
-                    <td width="10%" align="center" bgcolor="#EEEEEE">±¸×¢</td>
-                    <td width="6%" align="center" bgcolor="#EEEEEE">²Ù×÷</td>
+				    <td width="5%" align="center" bgcolor="#EEEEEE">é€‰æ‹©</td>
+                    <td width="21%" height="20" align="center" bgcolor="#EEEEEE">èŒä½åç§°</td>
+                    <td width="10%" align="center" bgcolor="#EEEEEE">å¤‡æ³¨</td>
+                    <td width="6%" align="center" bgcolor="#EEEEEE">æ“ä½œ</td>
                   </tr>
                   <tr>
 				    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
-                    <td height="20" bgcolor="#FFFFFF"><a href="listyuangong.html" onclick="">ÕıÊ½Ô±¹¤</a></td>
+                    <td height="20" bgcolor="#FFFFFF"><a href="listyuangong.html" onclick="">æ­£å¼å‘˜å·¥</a></td>
                     <td bgcolor="#FFFFFF">&nbsp;</td>
-                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">±à¼­</a></td>
+                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">ç¼–è¾‘</a></td>
                   </tr>
                   <tr>
 				   <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
                     <td height="20" bgcolor="#FFFFFF">gezhaofeng</td>
                     <td bgcolor="#FFFFFF">&nbsp;</td>
-                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">±à¼­</a></td>
+                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">ç¼–è¾‘</a></td>
                   </tr>
                   <tr>
 				    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
                     <td bgcolor="#FFFFFF">gezhaofeng</td>
                     <td bgcolor="#FFFFFF">&nbsp;</td>
-                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">±à¼­</a></td>
+                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">ç¼–è¾‘</a></td>
                   </tr>
                   <tr>
 				    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
                     <td bgcolor="#FFFFFF">gezhaofeng</td>
                     <td bgcolor="#FFFFFF">&nbsp;</td>
-                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">±à¼­</a></td>
+                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">ç¼–è¾‘</a></td>
                   </tr>
                   <tr>
 				    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
                     <td bgcolor="#FFFFFF">gezhaofeng</td>
                     <td bgcolor="#FFFFFF">&nbsp;</td>
-                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">±à¼­</a></td>
+                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">ç¼–è¾‘</a></td>
                   </tr>
                   <tr>
 				    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
                     <td bgcolor="#FFFFFF">gezhaofeng</td>
                     <td bgcolor="#FFFFFF">&nbsp;</td>
-                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">±à¼­</a></td>
+                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">ç¼–è¾‘</a></td>
                   </tr>
                   <tr>
 				    <td height="33" bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
                     <td bgcolor="#FFFFFF">gezhaofeng</td>
                     <td bgcolor="#FFFFFF">&nbsp;</td>
-                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">±à¼­</a></td>
+                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">ç¼–è¾‘</a></td>
                   </tr>
                   <tr>
 				    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
                     <td bgcolor="#FFFFFF">gezhaofeng</td>
                     <td bgcolor="#FFFFFF">&nbsp;</td>
-                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">±à¼­</a></td>
+                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">ç¼–è¾‘</a></td>
                   </tr>
                   <tr>
 				    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
                     <td bgcolor="#FFFFFF">gezhaofeng</td>
                     <td bgcolor="#FFFFFF">&nbsp;</td>
-                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">±à¼­</a></td>
+                    <td bgcolor="#FFFFFF"><a href="zhiwu.htm">ç¼–è¾‘</a></td>
                   </tr>
                 </table></td>
               </tr>
@@ -179,8 +184,8 @@ function link(){
         <tr>
           <td height="33"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="right-font08">
               <tr>
-                <td width="50%">¹² <span class="right-text09">5</span> Ò³ | µÚ <span class="right-text09">1</span> Ò³</td>
-                <td width="49%" align="right">[<a href="#" class="right-font08">Ê×Ò³</a> | <a href="#" class="right-font08">ÉÏÒ»Ò³</a> | <a href="#" class="right-font08">ÏÂÒ»Ò³</a> | <a href="#" class="right-font08">Ä©Ò³</a>] ×ªÖÁ£º</td>
+                <td width="50%">å…± <span class="right-text09">5</span> é¡µ | ç¬¬ <span class="right-text09">1</span> é¡µ</td>
+                <td width="49%" align="right">[<a href="#" class="right-font08">é¦–é¡µ</a> | <a href="#" class="right-font08">ä¸Šä¸€é¡µ</a> | <a href="#" class="right-font08">ä¸‹ä¸€é¡µ</a> | <a href="#" class="right-font08">æœ«é¡µ</a>] è½¬è‡³ï¼š</td>
                 <td width="1%"><table width="20" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td width="1%"><input name="textfield3" type="text" class="right-textfield03" size="1" /></td>

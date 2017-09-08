@@ -62,4 +62,15 @@ public class Loginlog {
     public void setLogindesc(String logindesc) {
         this.logindesc = logindesc;
     }
+
+	@Override
+	public String toString() {
+		return "Loginlog [loginid=" + loginid + ", userid=" + userid
+				+ ", logintime=" + logintime + ", ifsuccess=" + ifsuccess
+				+ ", loginuserip=" + loginuserip + ", logindesc=" + logindesc
+				+ "]";
+	}
+    
+    
+
 }
