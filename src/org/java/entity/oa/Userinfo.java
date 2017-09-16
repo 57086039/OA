@@ -1,7 +1,17 @@
 package org.java.entity.oa;
 
-public class Userinfo {
-    private String userid;
+import java.io.Serializable;
+
+public class Userinfo implements Serializable {
+    @Override
+	public String toString() {
+		return "Userinfo [userid=" + userid + ", username=" + username
+				+ ", password=" + password + ", departid=" + departid
+				+ ", gender=" + gender + ", roleid=" + roleid
+				+ ", userstateid=" + userstateid + "]";
+	}
+
+	private String userid;
 
     private String username;
 

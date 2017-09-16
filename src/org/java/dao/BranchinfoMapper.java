@@ -1,5 +1,7 @@
 package org.java.dao;
 
+import java.util.List;
+
 import org.java.entity.oa.Branchinfo;
 
 public interface BranchinfoMapper {
@@ -14,4 +16,6 @@ public interface BranchinfoMapper {
     int updateByPrimaryKeySelective(Branchinfo record);
 
     int updateByPrimaryKey(Branchinfo record);
+    
+    List<Branchinfo> jigou();
 }

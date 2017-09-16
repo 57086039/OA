@@ -114,4 +114,9 @@
       BRANCHID = #{branchid,jdbcType=DECIMAL}
     where DEPARTID = #{departid,jdbcType=DECIMAL}
   </update>
+	
+	 <!-- 查询所有部门 -->
+   <select id="bumen" resultType="dep">
+  	select * from DepartInfo
+  </select>
 </mapper>

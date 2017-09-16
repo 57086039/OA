@@ -90,4 +90,42 @@
       SIGNTAG = #{signtag,jdbcType=DECIMAL}
     where SIGNID = #{signid,jdbcType=DECIMAL}
   </update>
+  
+   <!--  查询所有签到表对象 -->
+   <select id="findAll" resultType="man">
+  	select * from ManualSign
+  </select>
+  
+  <!-- 添加对象到签到表方法； -->
+  <insert id="add" parameterType="man">
+	 insert into ManualSign values(ManualSign_Seq.nextval,#{userid},to_date(#{signtime},'yyyy-MM-dd hh24:mi:ss'),#{signdesc},#{signtag})
+  </insert>
+  
+ <!--  查询当天的方法 -->
+  <select id="searchToday" parameterType="m"  resultType="m">
+  		  select u.UserName,m.SignTime,m.SignDesc,b.BranchName,d.DepartName,m.SignTag from ManualSign  m,UserInfo u,DepartInfo d,BranchInfo b where m.UserId=u.UserId and 
+        d.UserId=u.UserId and b.BranchId=d.BranchId 
+        and to_char(signTime,#{geshi})=to_char(sysdate,#{geshi}) <include refid="condition1"/>
+  </select>
+    
+ 
+ <sql id="condition1">
+			<if test="BranchName!=null and BranchName!=''">
+				and b.BranchName=#{BranchName}
+			</if>
+			<if test="DepartName!=null and DepartName!=''">
+				and d.DepartName=#{DepartName}
+			</if>
+				<if test="UserId!=null and UserId!=''">
+				and u.UserId=#{UserId}
+			</if>
+				<if test="UserName!=null and UserName!=''">
+				and u.UserName like '%${UserName}%'   
+			</if>
+</sql>
+  
+
+ 
+ 
+
 </mapper>

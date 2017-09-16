@@ -14,4 +14,10 @@ public interface MeetinginfoMapper {
     int updateByPrimaryKeySelective(Meetinginfo record);
 
     int updateByPrimaryKey(Meetinginfo record);
+    
+    
+    
+    
+    
+    
 }

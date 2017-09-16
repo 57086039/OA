@@ -1,7 +1,15 @@
 package org.java.entity.oa;
 
 public class Departinfo {
-    private Long departid;
+    @Override
+	public String toString() {
+		return "Departinfo [departid=" + departid + ", departname="
+				+ departname + ", userid=" + userid + ", connecttelno="
+				+ connecttelno + ", connectmobiletelno=" + connectmobiletelno
+				+ ", faxes=" + faxes + ", branchid=" + branchid + "]";
+	}
+
+	private Long departid;
 
     private String departname;
 

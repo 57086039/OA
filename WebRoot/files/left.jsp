@@ -271,16 +271,16 @@ function list(idstr){
 	  <table id="subtree4" style="DISPLAY: none" width="80%" border="0" align="center" cellpadding="0" cellspacing="0" class="left-table02">
 		<tr>
           <td width="9%" height="20" ><img id="xiaotu11" src="../images/ico06.gif" width="8" height="12" /></td>
-          <td width="91%"><a href="listGongZiType.htm" target="mainFrame" class="left-font03" onClick="tupian('11');">员工签到,签退</a></td>
+          <td width="91%"><a href="<%=path %>/files/kjs/listGongZiType.jsp" target="mainFrame" class="left-font03" onClick="tupian('11');">员工签到,签退</a></td>
         </tr>
 	  	<tr>
           <td width="9%" height="20" ><img id="xiaotu12" src="../images/ico06.gif" width="8" height="12" /></td>
-          <td width="91%"><a href="listMonthYuanGongGongZi.htm" target="mainFrame" class="left-font03" onClick="tupian('12');">考勤历史查询</a></td>
+          <td width="91%"><a href="<%=path %>/files/kjs/listMonthYuanGongGongZi.jsp" target="mainFrame" class="left-font03" onClick="tupian('12');">考勤历史查询</a></td>
         </tr>
         
         <tr>
           <td width="9%" height="20" ><img id="xiaotu12" src="../images/ico06.gif" width="8" height="12" /></td>
-          <td width="91%"><a href="listMonthYuanGongGongZi.htm" target="mainFrame" class="left-font03" onClick="tupian('12');">考勤统计</a></td>
+          <td width="91%"><a href="<%=path %>/files/kjs/listMonthYuanGongGongZi1.jsp" target="mainFrame" class="left-font03" onClick="tupian('12');">考勤统计</a></td>
         </tr>
       </table>
 

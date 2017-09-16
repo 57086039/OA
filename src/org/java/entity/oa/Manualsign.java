@@ -1,13 +1,19 @@
 package org.java.entity.oa;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Manualsign {
+/**
+ * «©µΩ¿‡
+ * @author Admin
+ *
+ */
+public class Manualsign implements Serializable {
     private Long signid;
 
     private String userid;
 
-    private Date signtime;
+    private String signtime;
 
     private String signdesc;
 
@@ -29,11 +35,11 @@ public class Manualsign {
         this.userid = userid;
     }
 
-    public Date getSigntime() {
+    public String getSigntime() {
         return signtime;
     }
 
-    public void setSigntime(Date signtime) {
+    public void setSigntime(String signtime) {
         this.signtime = signtime;
     }
 
@@ -52,4 +58,12 @@ public class Manualsign {
     public void setSigntag(Long signtag) {
         this.signtag = signtag;
     }
+
+	@Override
+	public String toString() {
+		return "Manualsign [signid=" + signid + ", userid=" + userid
+				+ ", signtime=" + signtime + ", signdesc=" + signdesc
+				+ ", signtag=" + signtag + "]";
+	}
+    
 }

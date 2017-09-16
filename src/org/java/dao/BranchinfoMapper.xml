@@ -68,4 +68,9 @@
       BRANCHSHORTNAME = #{branchshortname,jdbcType=VARCHAR}
     where BRANCHID = #{branchid,jdbcType=DECIMAL}
   </update>
+
+  	 <!--  查询所有机构 -->
+   <select id="jigou" resultType="bra">
+  	select * from BranchInfo
+  </select>
 </mapper>

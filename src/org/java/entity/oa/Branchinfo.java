@@ -5,7 +5,13 @@ public class Branchinfo {
 
     private String branchname;
 
-    private String branchshortname;
+    @Override
+	public String toString() {
+		return "Branchinfo [branchid=" + branchid + ", branchname="
+				+ branchname + ", branchshortname=" + branchshortname + "]";
+	}
+
+	private String branchshortname;
 
     public Long getBranchid() {
         return branchid;

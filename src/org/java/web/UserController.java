@@ -46,7 +46,8 @@ public class UserController {
 		
 		Map<String, Object> user=loginservice.login(info);
 		System.out.println(user);
-		if(!code.equals(codes)){
+		System.out.println("===========");
+		if(!code.equalsIgnoreCase(codes)){
 			ses.setAttribute("err", "ÑéÖ¤ÂëÊäÈë´íÎó");
 		//	System.out.println("dddddddddddddddddddddddddddddddddddd");
 			return "redirect:/login.jsp";

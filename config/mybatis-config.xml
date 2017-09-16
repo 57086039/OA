@@ -4,5 +4,10 @@
 	<typeAliases>
 		<typeAlias type="org.java.entity.oa.Userinfo" alias="f"/>
 		<typeAlias type="java.util.Map" alias="m"/>
+		
+		<typeAlias type="org.java.entity.oa.Manualsign" alias="man"/> <!-- 签到类别名 -->
+		<typeAlias type="org.java.entity.oa.Branchinfo" alias="bra"/> <!-- 机构类别面 -->
+		<typeAlias type="org.java.entity.oa.Departinfo" alias="dep"/> <!-- 部门类别名-->
+		
 	</typeAliases>
 </configuration>
