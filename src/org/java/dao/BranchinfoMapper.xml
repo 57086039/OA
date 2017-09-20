@@ -68,4 +68,7 @@
       BRANCHSHORTNAME = #{branchshortname,jdbcType=VARCHAR}
     where BRANCHID = #{branchid,jdbcType=DECIMAL}
   </update>
+  <select id="jigou" resultType="java.util.HashMap">
+      select * from BranchInfo
+  </select>
 </mapper>

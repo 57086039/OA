@@ -1,5 +1,8 @@
 package org.java.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.java.entity.oa.Branchinfo;
 
 public interface BranchinfoMapper {
@@ -14,4 +17,9 @@ public interface BranchinfoMapper {
     int updateByPrimaryKeySelective(Branchinfo record);
 
     int updateByPrimaryKey(Branchinfo record);
+    
+    //查询所有机构
+    List<Map<String, Object>> jigou();
+    
+    
 }

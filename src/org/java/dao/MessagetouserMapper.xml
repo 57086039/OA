@@ -79,4 +79,9 @@
       IFREAD = #{ifread,jdbcType=DECIMAL}
     where ID = #{id,jdbcType=DECIMAL}
   </update>
+ <select id="fasong" parameterType="java.lang.Long" resultType="String">
+     select u.username from Userinfo u,MessageToUser m,Message me  where u.userid=m.touserid and me.messageid=m.messageid and me.messageid=#{MessageId}
+ 
+ </select>
+  
 </mapper>

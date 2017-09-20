@@ -9,7 +9,7 @@ public class Message {
 
     private Long type;
 
-    private Date begintime;
+    private String begintime;
 
     private Date endtime;
 
@@ -21,7 +21,16 @@ public class Message {
 
     private String content;
 
-    public Long getMessageid() {
+    @Override
+	public String toString() {
+		return "Message [messageid=" + messageid + ", title=" + title
+				+ ", type=" + type + ", begintime=" + begintime + ", endtime="
+				+ endtime + ", fromuserid=" + fromuserid + ", ifpublish="
+				+ ifpublish + ", recordtime=" + recordtime + ", content="
+				+ content + "]";
+	}
+
+	public Long getMessageid() {
         return messageid;
     }
 
@@ -45,11 +54,11 @@ public class Message {
         this.type = type;
     }
 
-    public Date getBegintime() {
+    public String getBegintime() {
         return begintime;
     }
 
-    public void setBegintime(Date begintime) {
+    public void setBegintime(String begintime) {
         this.begintime = begintime;
     }
 

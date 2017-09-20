@@ -12,9 +12,10 @@ public class test {
 		ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
 		LoginService service=(LoginService) ctx.getBean("loginService");
 		Userinfo info=new Userinfo();
-		//info.setUsername("ÅáÜ¿ÁÖ");
+		//info.setUsername("ï¿½ï¿½Ü¿ï¿½ï¿½");
 		//info.setPassword("123456789");
 		//Map<String, Object> map=service.login(info);
+	
 		System.out.println(service.findAll("8"));
 	}
 

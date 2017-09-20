@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
 <mapper namespace="org.java.dao.MessageMapper" >
+
   <resultMap id="BaseResultMap" type="org.java.entity.oa.Message" >
     <id column="MESSAGEID" property="messageid" jdbcType="DECIMAL" />
     <result column="TITLE" property="title" jdbcType="VARCHAR" />
@@ -157,7 +159,22 @@
     where MESSAGEID = #{messageid,jdbcType=DECIMAL}
   </update>
    <select id="findByXiaoXi" resultType="java.util.HashMap">
-       select m.*,u.username as uname from Message m,UserInfo u where BeginTime between to_date(#{kaishi},'yyyy-MM-dd') and   to_date(#{jieshu},'yyyy-MM-dd') and m.fromuserid=u.userid
-
+   
+	  select * from
+       (select  B.*,rownum rn from(select  m.*,u.username as uname,t.MessageTypeName as tname  from Message m,UserInfo u,MessageType t where  m.fromuserid=u.userid 
+       and t.MessageTypeId=m.Type and  BeginTime between to_date(#{kaishi},'yyyy/MM/dd') and   to_date(#{jieshu},'yyyy/MM/dd')  order by  m.MESSAGEID asc ) B
+          
+        where rownum &lt;=#{index} ) ua
+      where ua.rn>#{size}
+   
    </select>
+   
+   <select id="count" resultType="Int">
+        select count(*) from Message where  BeginTime between to_date(#{kaishi},'yyyy-MM-dd') and   to_date(#{jieshu},'yyyy-MM-dd')
+   </select>
+   <insert id="AddXiaoXi" parameterType="java.util.HashMap">
+     insert into Message values(Message_Seq.Nextval,#{title},#{content},#{type},to_date(#{begintime},'yyyy-MM-dd hh:mm:ss'), to_date(#{begintime},'yyyy-MM-dd hh:mm:ss')+1/24 ,#{fromuserid},#{iifpublish},sysdate);
+       
+   </insert>
+   
 </mapper>

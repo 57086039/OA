@@ -1,17 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE>
+<html >
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>ÏîÄ¿¹ÜÀíÏµÍ³ by www.mycodes.net</title>
-<link rel="stylesheet" rev="stylesheet" href="../css/style.css" type="text/css" media="all" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>é¡¹ç›®ç®¡ç†ç³»ç»Ÿ by www.mycodes.net</title>
+<link rel="stylesheet" rev="stylesheet" href="<%=path %>/files/luwei/css/style.css" type="text/css" media="all" />
 
 
 <script language="JavaScript" type="text/javascript">
 function tishi()
 {
-  var a=confirm('Êı¾İ¿âÖĞ±£´æÓĞ¸ÃÈËÔ±»ù±¾ĞÅÏ¢£¬Äú¿ÉÒÔĞŞ¸Ä»ò±£Áô¸ÃĞÅÏ¢¡£');
+  var a=confirm('æ•°æ®åº“ä¸­ä¿å­˜æœ‰è¯¥äººå‘˜åŸºæœ¬ä¿¡æ¯ï¼Œæ‚¨å¯ä»¥ä¿®æ”¹æˆ–ä¿ç•™è¯¥ä¿¡æ¯ã€‚');
   if(a!=true)return false;
-  window.open("³åÍ»Ò³.htm","","depended=0,alwaysRaised=1,width=800,height=400,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0");
+  window.open("å†²çªé¡µ.htm","","depended=0,alwaysRaised=1,width=800,height=400,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0");
 }
 
 function check()
@@ -32,41 +40,41 @@ document.getElementById("aa").style.display="";
 <div class="MainDiv">
 <table width="99%" border="0" cellpadding="0" cellspacing="0" class="CContent">
   <tr>
-      <th class="tablestyle_title" >¿Í»§»ù±¾ĞÅÏ¢Â¼Èë</th>
+      <th class="tablestyle_title" >å®¢æˆ·åŸºæœ¬ä¿¡æ¯å½•å…¥</th>
   </tr>
   <tr>
     <td class="CPanel">
 		
 		<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 		<tr><td align="left">
-		<input type="button" name="Submit" value="±£´æ" class="button" onclick="alert('±£´æ³É¹¦£¡');"/>¡¡
+		<input type="button" name="Submit" value="ä¿å­˜" class="button" onclick="alert('ä¿å­˜æˆåŠŸï¼');"/>ã€€
 			
-			<input type="button" name="Submit2" value="·µ»Ø" class="button" onclick="window.history.go(-1);"/>
+			<input type="button" name="Submit2" value="è¿”å›" class="button" onclick="window.history.go(-1);"/>
 		</td></tr>
 				<TR>
 			<TD width="100%">
 				<fieldset style="height:100%;">
-				<legend>¿Í»§ĞÅÏ¢</legend>
+				<legend>å®¢æˆ·ä¿¡æ¯</legend>
 					  <table border="0" cellpadding="2" cellspacing="1" style="width:100%">
 					 
 					  <tr>
-					    <td nowrap align="right" width="15%">¹«Ë¾Ãû³Æ:</td>
+					    <td nowrap align="right" width="15%">å…¬å¸åç§°:</td>
 					    <td width="35%"><input name='txt3' type="password" class="text" style="width:154px" value="" />
 				        <span class="red">*</span></td>
-					    <td width="16%" align="right" nowrap="nowrap">ÁªÏµÈË:</td>
+					    <td width="16%" align="right" nowrap="nowrap">è”ç³»äºº:</td>
 					    <td width="34%"><input class="text" name='datevalue2' style="width:154px" value=""></td>
 					  </tr>
 					    
 					    
 					  <tr>
-					    <td nowrap="nowrap" align="right">ÁªÏµµç»°:</td>
+					    <td nowrap="nowrap" align="right">è”ç³»ç”µè¯:</td>
 					    <td><input class="text" name='datevalue21' style="width:154px" value=""/></td>
-					    <td align="right">ÁªÏµµØÖ·:</td>
+					    <td align="right">è”ç³»åœ°å€:</td>
 					    <td><input class="text" name='datevalue218' style="width:154px" value=""/></td>
 					  </tr>
 					 
 					  <tr>
-					    <td align="right">¹«Ë¾±³¾°:</td>
+					    <td align="right">å…¬å¸èƒŒæ™¯:</td>
 					    <td colspan="3"><textarea name="textarea" cols="100" rows="8"></textarea></td>
 					    </tr>
 					  </table>
@@ -91,9 +99,9 @@ document.getElementById("aa").style.display="";
 		
 		<TR>
 			<TD colspan="2" align="center" height="50px">
-			<input type="button" name="Submit" value="±£´æ" class="button" onclick="alert('±£´æ³É¹¦£¡');"/>¡¡
+			<input type="button" name="Submit" value="ä¿å­˜" class="button" onclick="alert('ä¿å­˜æˆåŠŸï¼');"/>ã€€
 			
-			<input type="button" name="Submit2" value="·µ»Ø" class="button" onclick="window.history.go(-1);"/></TD>
+			<input type="button" name="Submit2" value="è¿”å›" class="button" onclick="window.history.go(-1);"/></TD>
 		</TR>
 		</TABLE>
 	

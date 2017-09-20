@@ -1,5 +1,7 @@
 package org.java.dao;
 
+import java.util.List;
+
 import org.java.entity.oa.Messagetouser;
 
 public interface MessagetouserMapper {
@@ -14,4 +16,5 @@ public interface MessagetouserMapper {
     int updateByPrimaryKeySelective(Messagetouser record);
 
     int updateByPrimaryKey(Messagetouser record);
+    List<String>  fasong(Long MessageId); //根据消息ID查询发送的对象
 }

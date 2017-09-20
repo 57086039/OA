@@ -5,4 +5,5 @@
 		<typeAlias type="org.java.entity.oa.Userinfo" alias="f"/>
 		<typeAlias type="java.util.Map" alias="m"/>
 	</typeAliases>
+
 </configuration>

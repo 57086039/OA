@@ -114,4 +114,16 @@
       BRANCHID = #{branchid,jdbcType=DECIMAL}
     where DEPARTID = #{departid,jdbcType=DECIMAL}
   </update>
+  <select id="bumen" resultType="java.util.HashMap">
+  		select * from  DepartInfo
+  </select>
+  <!-- 通过机构name查找部门 -->
+  <select id="bumenShaiXuan" resultType="java.util.HashMap">
+    select d.departname from Departinfo d,BranchInfo b where d.branchid=b.branchid and b.branchname=#{branchname}
+  
+  </select>
+  <!-- 根据部门名称查找人员 -->
+  <select id="renxuanbumen" resultType="java.util.HashMap">
+        select u.username,d.departname from DepartInfo d, UserInfo u where d.departid=u.departid and d.departname=#{departname}
+  </select>
 </mapper>

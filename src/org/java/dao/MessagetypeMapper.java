@@ -1,5 +1,8 @@
 package org.java.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.java.entity.oa.Messagetype;
 
 public interface MessagetypeMapper {
@@ -14,4 +17,10 @@ public interface MessagetypeMapper {
     int updateByPrimaryKeySelective(Messagetype record);
 
     int updateByPrimaryKey(Messagetype record);
+    
+    /*
+     * 查询所有消息类型
+     * */
+    List<Map<String, Object>> XiaoXiType();
+    
 }
